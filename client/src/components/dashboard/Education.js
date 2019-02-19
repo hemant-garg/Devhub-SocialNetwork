@@ -5,9 +5,6 @@ import Moment from "react-moment";
 import { deleteEducation } from "../../actions/profileActions";
 
 class Education extends Component {
-	constructor(props) {
-		super(props);
-	}
 	onDeleteEdu = id => {
 		this.props.deleteEducation(id);
 	};
@@ -37,8 +34,8 @@ class Education extends Component {
 		));
 		return (
 			<div>
-				<h4 class="mb-2">Education Credentials</h4>
-				<table class="table">
+				<h4 className="mb-2">Education Credentials</h4>
+				<table className="table">
 					<thead>
 						<tr>
 							<th>School</th>

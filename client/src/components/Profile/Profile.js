@@ -18,7 +18,7 @@ class Profile extends Component {
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
+		// console.log(nextProps);
 		if (nextProps.errors.noprofile) {
 			this.props.history.push("/not-found");
 		}
