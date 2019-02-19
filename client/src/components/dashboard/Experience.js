@@ -5,9 +5,6 @@ import Moment from "react-moment";
 import { deleteExperience } from "../../actions/profileActions";
 
 class Experience extends Component {
-	constructor(props) {
-		super(props);
-	}
 	onDeleteExp = id => {
 		this.props.deleteExperience(id);
 	};
