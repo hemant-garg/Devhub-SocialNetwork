@@ -4,10 +4,12 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 
 const middleware = [thunk];
+
+let store;
 if (process.env.NODE_ENV === "production") {
-	const store = createStore(rootReducer, {}, applyMiddleware(...middleware));
+	store = createStore(rootReducer, {}, applyMiddleware(...middleware));
 } else {
-	const store = createStore(
+	store = createStore(
 		rootReducer,
 		{},
 		compose(
