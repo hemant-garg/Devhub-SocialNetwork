@@ -1,30 +1,31 @@
 {
-  "name": "socialnetwork",
-  "version": "1.0.0",
-  "description": "social network app",
-  "main": "server.js",
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "author": "hemant garg",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "concurrently": "^4.1.0",
-    "express": "^4.16.4",
-    "gravatar": "^1.8.0",
-    "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.12",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "validator": "^10.11.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.10"
-  }
+	"name": "socialnetwork",
+	"version": "1.0.0",
+	"description": "social network app",
+	"main": "server.js",
+	"scripts": {
+		"client-install": "npm install --prefix client",
+		"start": "node server.js",
+		"server": "nodemon server.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"herok-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm build --prefix client"
+	},
+	"author": "hemant garg",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.18.3",
+		"concurrently": "^4.1.0",
+		"express": "^4.16.4",
+		"gravatar": "^1.8.0",
+		"jsonwebtoken": "^8.4.0",
+		"mongoose": "^5.4.12",
+		"passport": "^0.4.0",
+		"passport-jwt": "^4.0.0",
+		"validator": "^10.11.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.18.10"
+	}
 }
