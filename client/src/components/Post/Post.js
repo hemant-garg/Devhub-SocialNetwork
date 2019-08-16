@@ -1,12 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Spinner from "../common/Spinner";
-import PostItem from "../Posts/PostItem";
-import { getPost } from "../../actions/postActions";
-import CommentForm from "./CommentForm";
-import CommentFeed from "./CommentFeed";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Spinner from '../common/Spinner';
+import { Container } from 'semantic-ui-react';
+import PostItem from '../Posts/PostItem';
+import { getPost } from '../../actions/postActions';
+import CommentForm from './CommentForm';
+import CommentFeed from './CommentFeed';
+import FeedLeft from '../Feed/FeedLeft';
+import FeedRight from '../Feed/FeedRight';
 
 class Post extends Component {
 	componentDidMount() {
@@ -15,30 +18,27 @@ class Post extends Component {
 	}
 	render() {
 		const { post, loading } = this.props.post;
+		const { user } = this.props.auth;
 		let postContent;
 		if (post === null || loading || Object.keys(post).length === 0)
 			postContent = <Spinner />;
 		else {
 			postContent = (
-				<div>
-					<PostItem post={post} showActions={false} />
-					<CommentForm postId={post._id} />
-					<CommentFeed postId={post._id} comments={post.comments} />
-				</div>
+				<PostItem post={post} postId={post._id} showActions={false} />
 			);
 		}
 		return (
 			<div className="post">
-				<div className="container">
-					<div className="row">
-						<div className="col-md-12">
-							<Link to="/feed" className="btn btn-light mb-3">
-								Back to Feed
-							</Link>
-							{postContent}
-						</div>
+				<Container>
+					<Link to="/feed" className="btn btn-light mb-3">
+						Back to Feed
+					</Link>
+					<div className="feed">
+						<FeedLeft user={user} />
+						<div className="feed-middle">{postContent}</div>
+						<FeedRight />
 					</div>
-				</div>
+				</Container>
 			</div>
 		);
 	}
@@ -49,8 +49,8 @@ Post.propTypes = {
 	auth: PropTypes.object
 };
 
-const mapStateToProps = ({ post }) => {
-	return { post };
+const mapStateToProps = ({ post, auth }) => {
+	return { post, auth };
 };
 export default connect(
 	mapStateToProps,

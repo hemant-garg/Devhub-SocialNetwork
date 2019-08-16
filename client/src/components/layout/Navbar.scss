@@ -1,0 +1,44 @@
+@import '../../variables';
+
+.navbar-container {
+	position: fixed;
+	background-color: #fff;
+	box-shadow: 0 3px 3px -3px $light-text;
+	top: 0;
+	z-index: 10;
+	padding: 1.3rem;
+	color: #fff;
+	right: 0;
+	left: 0;
+}
+
+.navbar {
+	display: flex;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.1rem;
+	font-weight: bold;
+	justify-content: space-between;
+	align-items: center;
+	color: $dark-text;
+	& a {
+		color: $dark-text;
+	}
+	& a:hover {
+		color: $main;
+	}
+
+	&-left {
+		& i {
+			color: $main;
+		}
+		& a {
+			margin-right: 1rem;
+		}
+	}
+	&-right {
+		font-size: 1rem;
+		& a {
+			margin-left: 1rem;
+		}
+	}
+}

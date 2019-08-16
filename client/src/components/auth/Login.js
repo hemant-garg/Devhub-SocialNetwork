@@ -1,28 +1,38 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-import TextFieldGroup from "../common/TextFieldGroup";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {
+	Button,
+	Form,
+	Grid,
+	Header,
+	Image,
+	Message,
+	Segment
+} from 'semantic-ui-react';
+
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			name: "",
-			email: "",
+			name: '',
+			email: '',
 			errors: {}
 		};
 	}
 
 	componentDidMount() {
 		if (this.props.auth.isAuthenticated) {
-			this.props.history.push("/dashboard");
+			this.props.history.push('/feed');
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.auth.isAuthenticated) {
-			this.props.history.push("/dashboard");
+			this.props.history.push('/dashboard');
 		}
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
@@ -77,6 +87,41 @@ class Login extends Component {
 					</div>
 				</div>
 			</div>
+			// <Grid
+			// 	textAlign="center"
+			// 	style={{ height: '100vh' }}
+			// 	verticalAlign="middle"
+			// >
+			// 	<Grid.Column style={{ maxWidth: 450 }}>
+			// 		<Header as="h2" color="teal" textAlign="center">
+			// 			Log-in to your account
+			// 		</Header>
+			// 		<Form size="large">
+			// 			<Segment stacked>
+			// 				<Form.Input
+			// 					fluid
+			// 					icon="user"
+			// 					iconPosition="left"
+			// 					placeholder="E-mail address"
+			// 				/>
+			// 				<Form.Input
+			// 					fluid
+			// 					icon="lock"
+			// 					iconPosition="left"
+			// 					placeholder="Password"
+			// 					type="password"
+			// 				/>
+
+			// 				<Button color="teal" fluid size="large">
+			// 					Login
+			// 				</Button>
+			// 			</Segment>
+			// 		</Form>
+			// 		<Message>
+			// 			New to us? <a href="#">Sign Up</a>
+			// 		</Message>
+			// 	</Grid.Column>
+			// </Grid>
 		);
 	}
 }

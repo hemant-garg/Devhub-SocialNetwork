@@ -1,0 +1,7 @@
+@import '../../variables';
+.searchbox {
+	width: 30rem;
+	& input {
+		background-color: $light-back !important;
+	}
+}

@@ -1,0 +1,31 @@
+@import '../../variables';
+.commentitem {
+	display: flex;
+	align-items: center;
+	font-size: 0.9rem;
+	margin-bottom: 0.4rem;
+	padding-bottom: 15px;
+	font-family: 'Montserrat', sans-serif;
+	& img {
+		width: 30px;
+		margin-right: 12px;
+		border-radius: 50%;
+	}
+	&-top {
+		flex: 1;
+	}
+	&-top-right {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	& span {
+		margin-left: 1rem;
+		color: $light-text;
+		font-size: 0.8rem;
+	}
+	&-text {
+		color: $dark-text-2;
+	}
+}

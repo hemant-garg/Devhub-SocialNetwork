@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import TextareaFieldGroup from "../common/TextareaFieldGroup";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Icon, Input } from 'semantic-ui-react';
+import TextareaFieldGroup from '../common/TextareaFieldGroup';
 
-import { addComment } from "../../actions/postActions";
+import { addComment } from '../../actions/postActions';
 
 class CommentForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			text: "",
+			text: '',
 			errors: {}
 		};
 	}
@@ -21,7 +22,7 @@ class CommentForm extends Component {
 	}
 
 	onChange = e => {
-		this.setState({ [e.target.name]: e.target.value });
+		this.setState({ text: e.target.value });
 	};
 
 	onSubmit = e => {
@@ -34,33 +35,29 @@ class CommentForm extends Component {
 			avatar: user.avatar
 		};
 		this.props.addComment(newComment, postId);
-		this.setState({ text: "" });
+		this.setState({ text: '' });
 	};
 	render() {
-		const { errors } = this.state;
+		const { errors, text } = this.state;
 		return (
-			<div className="post-form mb-3">
-				<div className="card card-info">
-					<div className="card-header bg-info text-white">
-						Make a Comment...
-					</div>
-					<div className="card-body">
-						<form onSubmit={this.onSubmit}>
-							<div className="form-group">
-								<TextareaFieldGroup
-									name="text"
-									error={errors.text}
-									onChange={this.onChange}
-									value={this.state.text}
-									placeholder="Reply to Post"
-								/>
-							</div>
-							<button type="submit" className="btn btn-dark">
-								Submit
-							</button>
-						</form>
-					</div>
-				</div>
+			<div>
+				<Input
+					fluid
+					onChange={this.onChange}
+					value={text}
+					icon={
+						<Icon
+							name="send"
+							onClick={this.onSubmit}
+							className="main-backcolor"
+							circular
+							link
+						/>
+					}
+					transparent
+					placeholder="Write a comment here..."
+				/>
+				{errors.text}
 			</div>
 		);
 	}

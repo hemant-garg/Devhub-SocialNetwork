@@ -1,89 +1,93 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-
-import Moment from "react-moment";
-import isEmpty from "../../validation/isEmpty";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Divider, Icon } from 'semantic-ui-react';
+import Moment from 'react-moment';
+import isEmpty from '../../validation/isEmpty';
 
 class ProfileCreds extends Component {
 	render() {
-		const { education, experience } = this.props;
+		const Segment = styled.div`
+			border-radius: 0.5rem;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+			margin-bottom: 2rem;
+			background-color: #fff;
+			padding: 2rem;
+			font-family: 'Montserrat', sans-serif;
+			box-sizing: border-box;
+		`;
+		const { education, experience, userId, auth } = this.props;
 
 		const expItems = experience.map(exp => (
-			<li className="list-group-item" key={exp._id}>
-				<h4>{exp.company}</h4>
-				<p>
+			<div className="experience" key={exp._id}>
+				<Divider />
+				<h5>{exp.title}</h5>
+				<div className="experience-company">{exp.company}</div>
+				<div className="experience-date">
 					{<Moment format="YYYY/MM/DD">{exp.from}</Moment>} -
 					{exp.current ? (
-						" Present"
+						' Present'
 					) : (
 						<Moment format="YYYY/MM/DD"> {exp.to}</Moment>
 					)}
-				</p>
-				<p>
-					<strong>Position:</strong> {exp.title}
-				</p>
-				<p>
-					{isEmpty(exp.location) ? null : (
-						<span>
-							<strong>Location:</strong> {exp.location}
-						</span>
-					)}
-				</p>
-				<p>
-					{isEmpty(exp.description) ? null : (
-						<span>
-							<strong>Description:</strong> {exp.description}
-						</span>
-					)}
-				</p>
-			</li>
+				</div>
+				<div>
+					{isEmpty(exp.description) ? null : <span>{exp.description}</span>}
+				</div>
+			</div>
 		));
 
 		const eduItems = education.map(edu => (
-			<li className="list-group-item" key={edu._id}>
-				<h4>{edu.school}</h4>
-				<p>
+			<div className="experience" key={edu._id}>
+				<Divider />
+				<h5>{edu.degree}</h5>
+				<div className="experience-company">{edu.school}</div>
+
+				<div style={{ fontSize: '.9rem' }}>{edu.fieldofstudy}</div>
+				<div className="experience-date">
 					{<Moment format="YYYY/MM/DD">{edu.from}</Moment>} -
 					{edu.current ? (
-						" Present"
+						' Present'
 					) : (
 						<Moment format="YYYY/MM/DD"> {edu.to}</Moment>
 					)}
-				</p>
+				</div>
 				<p>
-					<strong>Degree:</strong> {edu.degree}
+					{isEmpty(edu.description) ? null : <span>{edu.description}</span>}
 				</p>
-				<p>
-					<strong>Field Of Study:</strong> {edu.fieldofstudy}
-				</p>
-				<p>
-					{isEmpty(edu.description) ? null : (
-						<span>
-							<strong>Description:</strong> {edu.description}
-						</span>
-					)}
-				</p>
-			</li>
+			</div>
 		));
 
+		console.log(this.props);
 		return (
-			<div className="row">
-				<div className="col-md-6">
-					<h3 className="text-center text-info">Experience</h3>
+			<div>
+				<Segment>
+					<div className="experience-top">
+						<h4>Experience</h4>
+						{userId === auth.user.id ? (
+							<Icon size="large" link name="add circle" />
+						) : null}
+					</div>
 					{expItems.length > 0 ? (
-						<ul className="list-group">{expItems}</ul>
+						<div>{expItems}</div>
 					) : (
-						<p className="text-center">No Experience Listed</p>
+						<p>No Experience Listed</p>
 					)}
-				</div>
-				<div className="col-md-6">
-					<h3 className="text-center text-info">Education</h3>
+				</Segment>
+				<Segment>
+					<div className="experience-top">
+						<h4>Education</h4>
+						{userId === auth.user.id ? (
+							<Icon size="large" link name="add circle" />
+						) : null}
+					</div>
 					{eduItems.length > 0 ? (
-						<ul className="list-group">{eduItems}</ul>
+						<div>{eduItems}</div>
 					) : (
-						<p className="text-center">No Education Listed</p>
+						<p>No Education Listed</p>
 					)}
-				</div>
+				</Segment>
 			</div>
 		);
 	}
@@ -93,4 +97,7 @@ ProfileCreds.propTypes = {
 	username: PropTypes.string
 };
 
-export default ProfileCreds;
+const mapStateToProps = ({ auth }) => {
+	return { auth };
+};
+export default connect(mapStateToProps)(ProfileCreds);

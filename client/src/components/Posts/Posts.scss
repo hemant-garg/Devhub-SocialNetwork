@@ -1,0 +1,62 @@
+@import '../../variables';
+
+.postform-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	& button {
+		// padding-left: 2rem!important;
+		// padding-right: 2rem!important;
+		background-color: $main !important;
+	}
+}
+
+.postitem {
+	&-text {
+		color: $dark-text-2;
+	}
+	&-top {
+		display: flex;
+		align-items: center;
+		// justify-content: space-between;
+		// border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		padding-bottom: 15px;
+		& img {
+			width: 50px;
+			margin-right: 12px;
+			border-radius: 50%;
+		}
+		&-right {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		& p {
+			color: $light-text;
+			font-size: 0.9rem;
+		}
+	}
+
+	&-bottom {
+		display: flex;
+		align-items: center;
+		padding-top: 5px;
+		margin-top: 2rem;
+		// justify-content: space-between;
+		font-family: 'Montserrat', sans-serif;
+
+		& i {
+			cursor: pointer;
+			color: $dark-text;
+			font-size: 1.3rem !important;
+			margin-right: 0.5rem !important;
+		}
+		& a {
+			margin-left: 1.5rem;
+			color: $dark-text !important;
+			margin-right: 0.7rem;
+		}
+	}
+}

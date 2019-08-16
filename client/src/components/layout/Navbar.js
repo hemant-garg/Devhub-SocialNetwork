@@ -1,11 +1,22 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
-import { clearCurrentProfile } from "../../actions/profileActions";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Icon, Dropdown } from 'semantic-ui-react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Container } from 'semantic-ui-react';
+import { logoutUser } from '../../actions/authActions';
+import { clearCurrentProfile } from '../../actions/profileActions';
+import Button from '../common/Button.js';
+import SearchBox from '../SearchBox/SearchBox';
+import './Navbar.scss';
+// import '../../variables.scss';
 
 class Navbar extends Component {
+	state = { activeItem: 'home' };
+
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
 	onLogoutClick = e => {
 		e.preventDefault();
 		this.props.clearCurrentProfile();
@@ -13,84 +24,92 @@ class Navbar extends Component {
 	};
 
 	render() {
+		const { activeItem } = this.state;
+		const { handle } = this.props;
 		const { user, isAuthenticated } = this.props.auth;
-
+		console.log(this.props.auth);
 		const authLinks = (
-			<ul className="navbar-nav ml-auto">
-				<li className="nav-item">
-					<Link className="nav-link" to="/feed">
-						Post Feed
-					</Link>
-				</li>
-				<li className="nav-item">
-					<Link className="nav-link" to="/dashboard">
-						Dashboard
-					</Link>
-				</li>
-				<li className="nav-item">
-					<a onClick={this.onLogoutClick} className="nav-link" href="#">
-						<img
-							className="rounded-circle"
-							src={user.avatar}
-							alt={user.name}
-							style={{ width: "30px", marginRight: "8px" }}
+			<div style={{ display: 'flex', alignItems: 'center' }}>
+				<img
+					src={user.avatar}
+					alt={user.name}
+					style={{
+						width: '30px',
+						marginRight: '10px',
+						alignSelf: 'center',
+						borderRadius: '50%'
+					}}
+				/>
+				<Dropdown text={`Hi, ${user.name}`}>
+					<Dropdown.Menu>
+						<Dropdown.Divider />
+						<Dropdown.Item
+							style={{ marginLeft: '0' }}
+							as={Link}
+							to="/profile/manishgarg"
+							icon="user"
+							text={user.name}
 						/>
-						Logout
-					</a>
-				</li>
-			</ul>
+						<Dropdown.Item
+							style={{ marginLeft: '0' }}
+							as={Link}
+							to="/dashboard"
+							icon="edit"
+							text="Edit Profile"
+						/>
+						<Dropdown.Item
+							style={{ marginLeft: '0' }}
+							as={Link}
+							to="/feed"
+							icon="book"
+							text="My Posts"
+						/>
+						<Dropdown.Divider />
+
+						<Dropdown.Item
+							style={{ marginLeft: '0' }}
+							as="a"
+							icon="sign-out"
+							onClick={this.onLogoutClick}
+							text="Sign out"
+						/>
+					</Dropdown.Menu>
+				</Dropdown>
+			</div>
 		);
 
 		const guestLinks = (
-			<ul className="navbar-nav ml-auto">
-				<li className="nav-item">
-					<Link className="nav-link" to="/register">
-						Sign Up
-					</Link>
-				</li>
-				<li className="nav-item">
-					<Link className="nav-link" to="/login">
-						Login
-					</Link>
-				</li>
-			</ul>
+			<div>
+				<Link to="/register">Join now</Link>
+				<Button
+					to="/login"
+					color="#0172B0"
+					background="white"
+					content="Sign in"
+				/>
+			</div>
 		);
 
 		return (
-			<nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-				<div className="container">
-					<Link className="navbar-brand" to="/">
-						SocialNetwork
-					</Link>
-					<button
-						className="navbar-toggler"
-						type="button"
-						data-toggle="collapse"
-						data-target="#mobile-nav"
-					>
-						<span className="navbar-toggler-icon" />
-					</button>
-
-					<div className="collapse navbar-collapse" id="mobile-nav">
-						<ul className="navbar-nav mr-auto">
-							<li className="nav-item">
-								<Link className="nav-link" to="/profiles">
-									Developers
-								</Link>
-							</li>
-						</ul>
-						{isAuthenticated ? authLinks : guestLinks}
-					</div>
-				</div>
-			</nav>
+			<section className="navbar-container">
+				<Container>
+					<nav className="navbar">
+						<div className="navbar-left">
+							<Link to="/">
+								<Icon size="big" name="linkedin" />
+							</Link>
+							<Link to="/profiles">Developers</Link>
+						</div>
+						<SearchBox />
+						<div className="navbar-right">
+							{isAuthenticated ? authLinks : guestLinks}
+						</div>
+					</nav>
+				</Container>
+			</section>
 		);
 	}
 }
-
-Navbar.propTypes = {
-	logoutUser: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired
-};
 
 const mapStateToProps = ({ auth }) => {
 	return { auth };
