@@ -13,6 +13,7 @@ class Register extends Component {
 			email: '',
 			password: '',
 			password2: '',
+			handle: '',
 			errors: {}
 		};
 	}
@@ -39,7 +40,8 @@ class Register extends Component {
 			name: this.state.name,
 			email: this.state.email,
 			password: this.state.password,
-			password2: this.state.password2
+			password2: this.state.password2,
+			handle: this.state.handle
 		};
 
 		this.props.registerUser(newUser, this.props.history);
@@ -64,6 +66,13 @@ class Register extends Component {
 									value={this.state.name}
 									onChange={this.onChange}
 									error={errors.name}
+								/>
+								<TextFieldGroup
+									name="handle"
+									placeholder="User handle"
+									value={this.state.handle}
+									onChange={this.onChange}
+									error={errors.handle}
 								/>
 								<TextFieldGroup
 									name="email"

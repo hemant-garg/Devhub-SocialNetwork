@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 import { deleteComment } from '../../actions/postActions';
@@ -34,7 +35,9 @@ class CommentItem extends Component {
 				<div className="commentitem-top">
 					<div className="commentitem-top-right">
 						<div>
-							<strong>{comment.name}</strong>
+							<Link to={`/profile/${comment.handle}`}>
+								<strong>{comment.name}</strong>
+							</Link>
 							<span>{`${new Date(comment.date).getDate()} ${
 								months[new Date(comment.date).getMonth()]
 							}, ${new Date(comment.date).getFullYear()}`}</span>

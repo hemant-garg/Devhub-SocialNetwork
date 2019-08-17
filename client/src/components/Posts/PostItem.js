@@ -45,6 +45,7 @@ class PostItem extends Component {
 
 	render() {
 		const { post, auth, showActions, postId } = this.props;
+		console.log('post', this.props);
 		const Segment = styled.div`
 			border-radius: 0.5rem;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -88,10 +89,14 @@ class PostItem extends Component {
 				<Segment>
 					<div>
 						<div className="postitem-top">
-							<img src={post.avatar} alt={post.name} />
+							<Link to={`/profile/${post.handle}`}>
+								<img src={post.avatar} alt={post.name} />
+							</Link>
 							<div className="postitem-top-right">
 								<div>
-									<strong>{post.name}</strong>
+									<Link to={`/profile/${post.handle}`}>
+										<strong>{post.name}</strong>
+									</Link>
 									<p>{`${new Date(post.date).getDate()} ${
 										months[new Date(post.date).getMonth()]
 									}, ${new Date(post.date).getFullYear()}`}</p>

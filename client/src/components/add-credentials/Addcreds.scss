@@ -1,0 +1,68 @@
+@import '../../variables.scss';
+
+.form {
+	background-color: $second-2;
+	font-size: 0.9rem !important;
+	&-header {
+		background-color: rgb(4, 158, 86);
+		position: relative;
+		padding: 1.5rem;
+		color: #fefefe;
+	}
+	&-main {
+		padding: 1.5rem;
+		padding-top: 1rem;
+		& .ui.circular.button {
+			background-color: #fefefe;
+			color: $second-2;
+			padding: 0.8rem 3rem;
+		}
+		& .ui.icon.input > i.link.icon {
+			color: #fefefe;
+		}
+		& .ui.checkbox label {
+			font-size: 0.9rem;
+			margin-top: 2rem;
+			color: #fefefe !important;
+		}
+		& .ui.checkbox .box:before,
+		.ui.checkbox label:before {
+			width: 15px;
+			height: 15px;
+		}
+		& .ui.checkbox input:checked ~ .box:after,
+		.ui.checkbox input:checked ~ label:after {
+			color: $second-2;
+		}
+		& .ui.form .field .ui.input {
+			border-bottom: 1px solid #fefefe;
+			margin-top: 2rem;
+			padding-bottom: 0.8rem !important;
+		}
+		& .ui.form .field {
+			margin-bottom: 0;
+		}
+		& .ui.pointing.label {
+			font-size: 0.7rem;
+		}
+
+		& textarea {
+			color: #fefefe !important;
+			font-weight: bold;
+			margin-top: 1.5rem !important;
+			&::placeholder {
+				color: #fefefe !important;
+				font-weight: normal;
+			}
+		}
+		& input::placeholder {
+			color: #fefefe !important;
+			font-weight: normal;
+		}
+
+		& input {
+			color: #fefefe !important;
+			font-weight: bold;
+		}
+	}
+}

@@ -30,7 +30,7 @@ class ProfileLeft extends Component {
 						<p className="light-text">{profile.handle}</p>
 						<p>
 							{isEmpty(profile.bio) ? (
-								<span>{profile.name} does not have a bio</span>
+								<span>{profile.user.name} does not have a bio</span>
 							) : (
 								<span>{profile.bio}</span>
 							)}

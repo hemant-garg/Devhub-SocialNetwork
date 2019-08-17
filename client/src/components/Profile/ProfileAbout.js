@@ -16,7 +16,6 @@ class ProfileAbout extends Component {
 			box-sizing: border-box;
 		`;
 		const { profile } = this.props;
-		const firstName = profile.user.name.split(' ')[0];
 
 		return (
 			<Segment>

@@ -27,7 +27,7 @@ class Navbar extends Component {
 		const { activeItem } = this.state;
 		const { handle } = this.props;
 		const { user, isAuthenticated } = this.props.auth;
-		console.log(this.props.auth);
+		console.log('nav', this.props.auth);
 		const authLinks = (
 			<div style={{ display: 'flex', alignItems: 'center' }}>
 				<img
@@ -46,7 +46,7 @@ class Navbar extends Component {
 						<Dropdown.Item
 							style={{ marginLeft: '0' }}
 							as={Link}
-							to="/profile/manishgarg"
+							to={`/profile/${user.handle}`}
 							icon="user"
 							text={user.name}
 						/>

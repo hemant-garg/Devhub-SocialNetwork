@@ -14,17 +14,27 @@ import './Profile.scss';
 import ProfileLeft from './ProfileLeft';
 import ProfileRight from './ProfileRight';
 class Profile extends Component {
+	state = { handle: null };
 	componentDidMount() {
-		if (this.props.match.params.handle) {
-			this.props.getProfileByHandle(this.props.match.params.handle);
+		const { handle } = this.props.match.params;
+		if (handle) {
+			this.setState({ handle });
+			this.props.getProfileByHandle(handle);
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		// console.log(nextProps);
+		console.log('nextprops', nextProps.match.params.handle, this.state.handle);
 		if (nextProps.errors.noprofile) {
 			this.props.history.push('/not-found');
 		}
+		if (nextProps.match.params.handle !== this.state.handle){
+			console.log('update')
+			let handle = nextProps.match.params.handle;
+			this.props.getProfileByHandle(handle);
+			this.setState({ handle });	
+		}
 	}
+
 	render() {
 		const { profile, loading } = this.props.profile;
 		const { user } = this.props.auth;

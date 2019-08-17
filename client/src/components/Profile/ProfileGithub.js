@@ -34,7 +34,7 @@ class ProfileGithub extends Component {
 				if (i > 3) return;
 				if (i > 2)
 					return (
-						<div style={{ textAlign: 'center' }}>
+						<div key={repo.id} style={{ textAlign: 'center' }}>
 							<strong>
 								<a
 									target="_blank"

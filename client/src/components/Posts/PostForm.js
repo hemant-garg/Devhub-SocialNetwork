@@ -31,7 +31,8 @@ class PostForm extends Component {
 		const newPost = {
 			text: this.state.text,
 			name: user.name,
-			avatar: user.avatar
+			avatar: user.avatar,
+			handle: user.handle
 		};
 		this.props.addPost(newPost);
 		this.setState({ text: '' });
@@ -55,6 +56,7 @@ class PostForm extends Component {
 							<TextareaFieldGroup
 								name="text"
 								error={errors.text}
+								rows={3}
 								onChange={this.onChange}
 								value={this.state.text}
 								placeholder="Write Something here..."

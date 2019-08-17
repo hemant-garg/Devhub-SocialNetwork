@@ -6,8 +6,9 @@ import classnames from 'classnames';
 const textareaStyles = {
 	width: '100%',
 	fontFamily: '"Montserrat", sans-serif',
-	height: '80px',
+	backgroundColor: 'transparent',
 	border: 'none',
+	borderBottom: '1px solid white',
 	// boxShadow: '0 0px 2px rgba(0,0,0,.2)',
 	marginBottom: '.5rem',
 	padding: '1rem',
@@ -20,7 +21,8 @@ const TextareaFieldGroup = ({
 	value,
 	error,
 	info,
-	onChange
+	onChange,
+	rows
 }) => {
 	return (
 		<div>
@@ -33,6 +35,7 @@ const TextareaFieldGroup = ({
 				name={name}
 				onChange={onChange}
 				value={value}
+				rows={rows}
 			/>
 			{info && <small classname="form-text text-muted">{info}</small>}
 			{error && <div className="invalid-feedback">{error}</div>}

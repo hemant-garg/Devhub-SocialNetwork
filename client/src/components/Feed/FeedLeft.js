@@ -41,7 +41,7 @@ class FeedLeft extends Component {
 						<Icon color="pink" size="big" name="instagram" />
 						<Icon color="black" size="big" name="github" />
 					</SocialDeck>
-					<Link to="/profile/manishgarg">View Profile</Link>
+					<Link to={`/profile/${user.handle}`}>View Profile</Link>
 				</Segment>
 			</section>
 		);
