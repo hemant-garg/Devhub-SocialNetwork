@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -6,20 +7,29 @@ import { Container, Icon, Divider } from 'semantic-ui-react';
 import isEmpty from '../../validation/isEmpty';
 
 import './Profile.scss';
+import EditSocialMedia from '../edit-profile/EditSocialMedia';
 class ProfileLeft extends Component {
+	state = {
+		socialFormOpen: false
+	};
+
+	handleSocialForm = () => {
+		this.setState(prev => ({ socialFormOpen: !prev.socialFormOpen }));
+	};
 	render() {
 		const Segment = styled.div`
 			border-radius: 0.5rem;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 			margin-bottom: 2rem;
 			background-color: #fff;
-			padding: 2rem 1rem;
+			padding: 2rem 1.5rem;
 			position: sticky;
 			top: 90px;
 			font-family: 'Montserrat', sans-serif;
 			box-sizing: border-box;
 		`;
-		const { user, profile } = this.props;
+		const { user, profile, auth } = this.props;
+		const { socialFormOpen } = this.state;
 		console.log('profile-left', this.props);
 		return (
 			<section className="profile-left">
@@ -30,7 +40,7 @@ class ProfileLeft extends Component {
 						<p className="light-text">{profile.handle}</p>
 						<p>
 							{isEmpty(profile.bio) ? (
-								<span>{profile.user.name} does not have a bio</span>
+								<span>Developer at Social Network</span>
 							) : (
 								<span>{profile.bio}</span>
 							)}
@@ -38,6 +48,19 @@ class ProfileLeft extends Component {
 					</div>
 					<br />
 					<Divider />
+					<div className="experience-top">
+						<h4>Social Links: </h4>
+						{profile.user._id === user.id ? (
+							<Icon
+								onClick={this.handleSocialForm}
+								size="large"
+								style={{ fontSize: '1rem' }}
+								link
+								name={socialFormOpen ? 'close' : 'pencil'}
+							/>
+						) : null}
+					</div>
+					{socialFormOpen && <EditSocialMedia profile={profile} />}
 					<p>
 						{isEmpty(profile.website) ? null : (
 							<a
@@ -100,4 +123,8 @@ class ProfileLeft extends Component {
 	}
 }
 
-export default ProfileLeft;
+const mapStateToProps = ({ auth }) => {
+	return { auth };
+};
+
+export default connect(mapStateToProps)(ProfileLeft);

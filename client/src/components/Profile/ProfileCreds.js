@@ -33,7 +33,7 @@ class ProfileCreds extends Component {
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 			margin-bottom: 2rem;
 			background-color: #fff;
-			padding: 2rem;
+			padding: 2rem 1.5rem;
 			font-family: 'Montserrat', sans-serif;
 			box-sizing: border-box;
 		`;
@@ -122,6 +122,7 @@ class ProfileCreds extends Component {
 							<AddExperience />
 						</div>
 					)}
+
 					{expItems.length > 0 ? (
 						<div>{expItems}</div>
 					) : (

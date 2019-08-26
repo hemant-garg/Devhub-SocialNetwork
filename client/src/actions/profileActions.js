@@ -87,13 +87,14 @@ export const createProfile = (data, history) => dispatch => {
 };
 
 // delete account
-export const deleteAccount = () => dispatch => {
+export const deleteAccount = history => dispatch => {
 	if (window.confirm('Are you sure? This CANNOT be undone once deleted')) {
 		axios
 			.delete('/api/profile')
 			.then(res => {
 				localStorage.removeItem('jwtToken');
 				setAuthToken(false);
+				history.push('/register');
 				dispatch({
 					type: SET_CURRENT_USER,
 					payload: {}

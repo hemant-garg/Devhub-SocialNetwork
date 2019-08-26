@@ -27,11 +27,11 @@ class Profile extends Component {
 		if (nextProps.errors.noprofile) {
 			this.props.history.push('/not-found');
 		}
-		if (nextProps.match.params.handle !== this.state.handle){
-			console.log('update')
+		if (nextProps.match.params.handle !== this.state.handle) {
+			console.log('update');
 			let handle = nextProps.match.params.handle;
 			this.props.getProfileByHandle(handle);
-			this.setState({ handle });	
+			this.setState({ handle });
 		}
 	}
 
@@ -46,14 +46,13 @@ class Profile extends Component {
 					<div className="profile">
 						<ProfileLeft profile={profile} user={user} />
 						<div className="profile-middle">
-							{/*<ProfileHeader profile={profile} />*/}
-
+							<ProfileHeader profile={profile} />
 							<ProfileCreds
 								userId={profile.user._id}
 								education={profile.education}
 								experience={profile.experience}
 							/>
-							<ProfileAbout profile={profile} />
+							<ProfileAbout user={user} profile={profile} />
 						</div>
 						<ProfileRight profile={profile} />
 					</div>

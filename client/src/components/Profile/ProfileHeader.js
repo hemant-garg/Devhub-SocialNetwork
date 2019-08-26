@@ -1,88 +1,30 @@
 import React, { Component } from 'react';
+import { Divider } from 'semantic-ui-react';
+import styled from 'styled-components';
 import isEmpty from '../../validation/isEmpty';
 
 class ProfileHeader extends Component {
 	render() {
+		const Segment = styled.div`
+			border-radius: 0.5rem;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+			margin-bottom: 2rem;
+			background-color: #fff;
+			padding: 2rem 1.3rem;
+			font-family: 'Montserrat', sans-serif;
+			box-sizing: border-box;
+		`;
 		const { profile } = this.props;
 		return (
-			<div className="row">
-				<div className="col-md-12">
-					<div className="card card-body bg-info text-white mb-3">
-						<div className="text-center">
-							<h1 className="display-4 text-center">{profile.user.name}</h1>
-							<p className="lead text-center">
-								{profile.status} at{' '}
-								{isEmpty(profile.company) ? null : (
-									<span>{profile.company}</span>
-								)}
-							</p>
-							{isEmpty(profile.location) ? null : <p>{profile.location}</p>}
-							<p>
-								{isEmpty(profile.website) ? null : (
-									<a
-										className="text-white p-2"
-										target="_blank"
-										rel="noopener noreferrer"
-										href={profile.website}
-									>
-										<i className="fas fa-globe fa-2x" />
-									</a>
-								)}
-								{isEmpty(profile.social && profile.social.twitter) ? null : (
-									<a
-										className="text-white p-2"
-										target="_blank"
-										rel="noopener noreferrer"
-										href={profile.social.twitter}
-									>
-										<i className="fab fa-twitter fa-2x" />
-									</a>
-								)}
-								{isEmpty(profile.social && profile.social.facebook) ? null : (
-									<a
-										className="text-white p-2"
-										target="_blank"
-										rel="noopener noreferrer"
-										href={profile.social.facebook}
-									>
-										<i className="fab fa-facebook fa-2x" />
-									</a>
-								)}
-								{isEmpty(profile.social && profile.social.linkedin) ? null : (
-									<a
-										className="text-white p-2"
-										target="_blank"
-										rel="noopener noreferrer"
-										href={profile.social.linkedin}
-									>
-										<i className="fab fa-linkedin fa-2x" />
-									</a>
-								)}
-								{isEmpty(profile.social && profile.social.instagram) ? null : (
-									<a
-										className="text-white p-2"
-										target="_blank"
-										rel="noopener noreferrer"
-										href={profile.social.instagram}
-									>
-										<i className="fab fa-instagram fa-2x" />
-									</a>
-								)}
-								{isEmpty(profile.social && profile.social.youtube) ? null : (
-									<a
-										className="text-white p-2"
-										target="_blank"
-										rel="noopener noreferrer"
-										href={profile.social.youtube}
-									>
-										<i className="fab fa-youtube fa-2x" />
-									</a>
-								)}
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<Segment>
+				<h4>Bio</h4>
+				<Divider />
+				<p>
+					{profile.status} at{' '}
+					{isEmpty(profile.company) ? null : <span>{profile.company}</span>}
+				</p>
+				{isEmpty(profile.location) ? null : <p>{profile.location}</p>}
+			</Segment>
 		);
 	}
 }

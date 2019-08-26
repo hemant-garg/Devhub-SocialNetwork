@@ -67,7 +67,7 @@ class AddExperience extends Component {
 		const { errors } = this.state;
 		console.log('errors', errors);
 		return (
-			<div className="form">
+			<div className="form form-green">
 				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
 					<h4>Add Your Experience</h4>

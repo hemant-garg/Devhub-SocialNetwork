@@ -68,7 +68,7 @@ class AddEducation extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<div className="form">
+			<div className="form form-yellow">
 				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
 					<h4>Add Your Education</h4>
