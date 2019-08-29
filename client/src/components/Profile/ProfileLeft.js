@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-import { Container, Icon, Divider } from 'semantic-ui-react';
-import isEmpty from '../../validation/isEmpty';
+import { Container, Icon, Divider } from "semantic-ui-react";
+import isEmpty from "../../validation/isEmpty";
 
-import './Profile.scss';
-import EditSocialMedia from '../edit-profile/EditSocialMedia';
+import "./Profile.scss";
+import EditSocialMedia from "../edit-profile/EditSocialMedia";
 class ProfileLeft extends Component {
 	state = {
 		socialFormOpen: false
@@ -25,12 +25,12 @@ class ProfileLeft extends Component {
 			padding: 2rem 1.5rem;
 			position: sticky;
 			top: 90px;
-			font-family: 'Montserrat', sans-serif;
+			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
 		const { user, profile, auth } = this.props;
 		const { socialFormOpen } = this.state;
-		console.log('profile-left', this.props);
+		console.log("profile-left", this.props);
 		return (
 			<section className="profile-left">
 				<Segment>
@@ -40,7 +40,7 @@ class ProfileLeft extends Component {
 						<p className="light-text">{profile.handle}</p>
 						<p>
 							{isEmpty(profile.bio) ? (
-								<span>Developer at Social Network</span>
+								`${profile.user.name} doesn't have a bio.`
 							) : (
 								<span>{profile.bio}</span>
 							)}
@@ -49,19 +49,19 @@ class ProfileLeft extends Component {
 					<br />
 					<Divider />
 					<div className="experience-top">
-						<h4>Social Links: </h4>
+						<h5>Social Links: </h5>
 						{profile.user._id === user.id ? (
 							<Icon
 								onClick={this.handleSocialForm}
 								size="large"
-								style={{ fontSize: '1rem' }}
+								style={{ fontSize: "1rem" }}
 								link
-								name={socialFormOpen ? 'close' : 'pencil'}
+								name={socialFormOpen ? "close" : "pencil"}
 							/>
 						) : null}
 					</div>
 					{socialFormOpen && <EditSocialMedia profile={profile} />}
-					<p>
+					<p style={{ marginTop: "1.5rem", textAlign: "left" }}>
 						{isEmpty(profile.website) ? null : (
 							<a
 								target="_blank"

@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { Icon, Input, Divider } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-import { deletePost, addLike, removeLike } from '../../actions/postActions';
-import CommentForm from '../Post/CommentForm';
-import CommentFeed from '../Post/CommentFeed';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { Icon, Input, Divider } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import classnames from "classnames";
+import { deletePost, addLike, removeLike } from "../../actions/postActions";
+import CommentForm from "../Post/CommentForm";
+import CommentFeed from "../Post/CommentFeed";
 
 const months = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December'
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
 ];
 
 class PostItem extends Component {
@@ -45,44 +45,17 @@ class PostItem extends Component {
 
 	render() {
 		const { post, auth, showActions, postId } = this.props;
-		console.log('post', this.props);
+		console.log("post", this.props);
 		const Segment = styled.div`
 			border-radius: 0.5rem;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 			margin-bottom: 2rem;
 			background-color: #fff;
 			padding: 2rem;
-			font-family: 'Montserrat', sans-serif;
+			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
 
-		let actionContent;
-		if (showActions) {
-			actionContent = (
-				<div className="postitem-bottom">
-					<Icon
-						color="red"
-						onClick={() => this.onLikeClick(post._id)}
-						name="heart outline"
-					/>
-					{post.likes.length > 0 && post.likes.length}
-					{
-						// <i
-						// 	className={classnames('fas fa-thumbs-up', {
-						// 		'text-info': this.findUserLike(post.likes)
-						// 	})}
-						// />
-					}
-					{/* <button onClick={() => this.onUnlikeClick(post._id)} type="button">
-						<Icon name="thumbs down outline" /> Unlike
-					</button> */}
-					<Link to={`/post/${post._id}`}>
-						<Icon name="comment outline" />
-					</Link>
-					<Icon name="share alternate" />
-				</div>
-			);
-		} else actionContent = null;
 		// console.log(post);
 		return (
 			<div>
@@ -105,8 +78,11 @@ class PostItem extends Component {
 									{post.user === auth.user.id ? (
 										<Icon
 											title="Delete"
-											name="trash"
-											style={{ marginRight: '15px', cursor: 'pointer' }}
+											link
+											color="red"
+											circular
+											name="trash alternate"
+											style={{ marginRight: "15px", cursor: "pointer" }}
 											onClick={() => this.onDeleteClick(post._id)}
 										/>
 									) : null}
@@ -116,10 +92,31 @@ class PostItem extends Component {
 						<br />
 						<p className="postitem-text">{post.text}</p>
 
-						{actionContent}
+						<div className="postitem-bottom">
+							<Icon
+								color="red"
+								onClick={() => this.onLikeClick(post._id)}
+								name="heart outline"
+							/>
+							{post.likes.length > 0 && post.likes.length}
+							{
+								// <i
+								// 	className={classnames('fas fa-thumbs-up', {
+								// 		'text-info': this.findUserLike(post.likes)
+								// 	})}
+								// />
+							}
+							{/* <button onClick={() => this.onUnlikeClick(post._id)} type="button">
+						<Icon name="thumbs down outline" /> Unlike
+					</button> */}
+							<Link to={`/post/${post._id}`}>
+								<Icon name="comment outline" />
+							</Link>
+							<Icon name="share alternate" />
+						</div>
 					</div>
 					<Divider />
-					<h5 style={{ marginTop: 0, fontSize: '.8rem' }}>Comments:</h5>
+					<h5 style={{ marginTop: 0, fontSize: ".8rem" }}>Comments:</h5>
 					<CommentFeed postId={post._id} comments={post.comments} />
 					<br />
 					<CommentForm postId={post._id} />

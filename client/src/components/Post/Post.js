@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Spinner from '../common/Spinner';
-import { Container } from 'semantic-ui-react';
-import PostItem from '../Posts/PostItem';
-import { getPost } from '../../actions/postActions';
-import CommentForm from './CommentForm';
-import CommentFeed from './CommentFeed';
-import FeedLeft from '../Feed/FeedLeft';
-import FeedRight from '../Feed/FeedRight';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Spinner from "../common/Spinner";
+import { Container } from "semantic-ui-react";
+import PostItem from "../Posts/PostItem";
+import { getPost } from "../../actions/postActions";
+import CommentForm from "./CommentForm";
+import CommentFeed from "./CommentFeed";
+import FeedLeft from "../Feed/FeedLeft";
+import FeedRight from "../Feed/FeedRight";
 
 class Post extends Component {
 	componentDidMount() {
@@ -30,9 +30,6 @@ class Post extends Component {
 		return (
 			<div className="post">
 				<Container>
-					<Link to="/feed" className="btn btn-light mb-3">
-						Back to Feed
-					</Link>
 					<div className="feed">
 						<FeedLeft user={user} />
 						<div className="feed-middle">{postContent}</div>

@@ -9,11 +9,11 @@ import TextareaFieldGroup from "../common/TextareaFieldGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import isEmpty from "../../validation/isEmpty";
 
-class EditSkills extends Component {
+class EditGithub extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			skills: this.props.profile.skills.join(", "),
+			github: this.props.profile.githubusername,
 			errors: {}
 		};
 	}
@@ -22,7 +22,6 @@ class EditSkills extends Component {
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
 		}
-		console.log("nextProps", nextProps);
 		// if (nextProps.profile.profile) {
 		// 	const profile = nextProps.profile.profile;
 		// 	const skillsCSV = profile.skills.join(',');
@@ -40,7 +39,7 @@ class EditSkills extends Component {
 	onSubmit = e => {
 		e.preventDefault();
 		const profileData = {
-			skills: this.state.skills
+			github: this.state.github
 		};
 		// console.log("data sent: ", profileData);
 		this.props.createProfile(profileData, this.props.history);
@@ -48,26 +47,24 @@ class EditSkills extends Component {
 
 	render() {
 		const { profile } = this.props;
-		const { errors, skills } = this.state;
+		const { errors, github } = this.state;
 		return (
 			<div className="form form-red">
 				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
-					<h4>Edit Skill: </h4>
+					<h4>Edit Github username: </h4>
 				</div>
 				<div className="form-main">
 					<Form onSubmit={this.onSubmit}>
 						<TextareaFieldGroup
-							name="skills"
-							error={errors.skills}
-							rows={3}
+							name="github"
+							error={errors.github}
+							rows={2}
 							onChange={this.onChange}
-							value={skills}
-							placeholder="Add your Skills here.."
+							value={github}
+							placeholder="Github username.."
 						/>
-						<p style={{ color: "#fff", fontSize: ".8rem" }}>
-							* Each skill must be comma separated
-						</p>
+
 						{/*}	<Form.Input
 							name="youtube"
 							value={this.state.youtube}
@@ -93,4 +90,4 @@ const mapStateToProps = ({ errors }) => {
 export default connect(
 	mapStateToProps,
 	{ createProfile }
-)(withRouter(EditSkills));
+)(withRouter(EditGithub));

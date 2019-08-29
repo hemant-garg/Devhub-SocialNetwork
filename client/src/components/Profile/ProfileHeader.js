@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
-import { Divider } from 'semantic-ui-react';
-import styled from 'styled-components';
-import isEmpty from '../../validation/isEmpty';
+import React, { Component } from "react";
+import { Divider, Icon } from "semantic-ui-react";
+import styled from "styled-components";
+import isEmpty from "../../validation/isEmpty";
+import EditBio from "../edit-profile/EditBio";
 
 class ProfileHeader extends Component {
+	state = {
+		bioFormOpen: false
+	};
+
+	handleBioForm = () => {
+		this.setState(prev => ({ bioFormOpen: !prev.bioFormOpen }));
+	};
+
 	render() {
 		const Segment = styled.div`
 			border-radius: 0.5rem;
@@ -11,19 +20,36 @@ class ProfileHeader extends Component {
 			margin-bottom: 2rem;
 			background-color: #fff;
 			padding: 2rem 1.3rem;
-			font-family: 'Montserrat', sans-serif;
+			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
-		const { profile } = this.props;
+		const { profile, user } = this.props;
+		const { bioFormOpen } = this.state;
+		console.log("header", this.props);
 		return (
 			<Segment>
-				<h4>Bio</h4>
-				<Divider />
-				<p>
-					{profile.status} at{' '}
-					{isEmpty(profile.company) ? null : <span>{profile.company}</span>}
-				</p>
-				{isEmpty(profile.location) ? null : <p>{profile.location}</p>}
+				<div className="experience-top">
+					<h4>Bio:</h4>
+					{profile.user._id === user.id ? (
+						<Icon
+							onClick={this.handleBioForm}
+							size="large"
+							style={{ fontSize: "1.15rem" }}
+							link
+							name={bioFormOpen ? "close" : "pencil"}
+						/>
+					) : null}
+				</div>
+				{bioFormOpen && <EditBio profile={profile} />}
+				{!bioFormOpen && (
+					<p className="mt1">
+						{isEmpty(profile.bio) ? (
+							`${profile.user.name} doesn't have a bio.`
+						) : (
+							<span>{profile.bio}</span>
+						)}
+					</p>
+				)}
 			</Segment>
 		);
 	}

@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
-import ProfileHeader from './ProfileHeader';
-import ProfileAbout from './ProfileAbout';
-import ProfileCreds from './ProfileCreds';
-import ProfileGithub from './ProfileGithub';
-import Spinner from '../common/Spinner';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Container } from "semantic-ui-react";
+import ProfileHeader from "./ProfileHeader";
+import ProfileAbout from "./ProfileAbout";
+import ProfileCreds from "./ProfileCreds";
+import ProfileGithub from "./ProfileGithub";
+import Spinner from "../common/Spinner";
 
-import { getProfileByHandle } from '../../actions/profileActions';
-import './Profile.scss';
-import ProfileLeft from './ProfileLeft';
-import ProfileRight from './ProfileRight';
+import { getProfileByHandle } from "../../actions/profileActions";
+import "./Profile.scss";
+import ProfileLeft from "./ProfileLeft";
+import ProfileRight from "./ProfileRight";
 class Profile extends Component {
 	state = { handle: null };
 	componentDidMount() {
@@ -23,12 +23,12 @@ class Profile extends Component {
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		console.log('nextprops', nextProps.match.params.handle, this.state.handle);
+		console.log("nextprops", nextProps.match.params.handle, this.state.handle);
 		if (nextProps.errors.noprofile) {
-			this.props.history.push('/not-found');
+			this.props.history.push("/not-found");
 		}
 		if (nextProps.match.params.handle !== this.state.handle) {
-			console.log('update');
+			console.log("update");
 			let handle = nextProps.match.params.handle;
 			this.props.getProfileByHandle(handle);
 			this.setState({ handle });
@@ -46,7 +46,7 @@ class Profile extends Component {
 					<div className="profile">
 						<ProfileLeft profile={profile} user={user} />
 						<div className="profile-middle">
-							<ProfileHeader profile={profile} />
+							<ProfileHeader user={user} profile={profile} />
 							<ProfileCreds
 								userId={profile.user._id}
 								education={profile.education}
@@ -54,7 +54,7 @@ class Profile extends Component {
 							/>
 							<ProfileAbout user={user} profile={profile} />
 						</div>
-						<ProfileRight profile={profile} />
+						<ProfileRight user={user} profile={profile} />
 					</div>
 				</div>
 			);

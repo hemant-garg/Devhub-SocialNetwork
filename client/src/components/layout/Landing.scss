@@ -1,0 +1,28 @@
+.landing {
+	background-color: #fff;
+	padding-top: 3rem;
+
+	&-top {
+		display: flex;
+		align-items: center;
+		&--left {
+			width: 40%;
+			&-title {
+				font-size: 3.5rem;
+				font-weight: lighter;
+				margin-bottom: 2rem;
+			}
+			&-subtitle {
+				font-size: 1.5rem;
+				margin-bottom: 2rem;
+				font-weight: normal;
+			}
+		}
+		&--right {
+			width: 60%;
+			& img {
+				width: 100%;
+			}
+		}
+	}
+}

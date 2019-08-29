@@ -1,9 +1,9 @@
-@import '../../variables';
+@import "../../variables";
 
 .navbar-container {
 	position: fixed;
 	background-color: #fff;
-	box-shadow: 0 3px 3px -3px $light-text;
+	// box-shadow: 0 3px 3px -3px $light-text;
 	top: 0;
 	z-index: 10;
 	padding: 1.3rem;
@@ -14,7 +14,7 @@
 
 .navbar {
 	display: flex;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 	font-size: 1.1rem;
 	font-weight: bold;
 	justify-content: space-between;
@@ -33,6 +33,19 @@
 		}
 		& a {
 			margin-right: 1rem;
+			font-size: 1.4rem;
+			letter-spacing: 1px;
+			& span {
+				background-color: $main;
+				color: #fff;
+				padding: 0.2rem 0.4rem;
+				border-radius: 6px;
+				border-top-left-radius: 0;
+				margin-left: 0.3rem;
+			}
+			&:hover {
+				color: #555;
+			}
 		}
 	}
 	&-right {

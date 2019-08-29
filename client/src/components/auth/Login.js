@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import {
 	Button,
 	Form,
@@ -7,32 +8,34 @@ import {
 	Header,
 	Image,
 	Message,
-	Segment
-} from 'semantic-ui-react';
+	Segment,
+	Container
+} from "semantic-ui-react";
 
-import { connect } from 'react-redux';
-import { loginUser } from '../../actions/authActions';
-import TextFieldGroup from '../common/TextFieldGroup';
-
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
+import loginsvg from "./login.jpg";
+import "./auth.scss";
 class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			name: '',
-			email: '',
+			name: "",
+			email: "",
 			errors: {}
 		};
 	}
 
 	componentDidMount() {
 		if (this.props.auth.isAuthenticated) {
-			this.props.history.push('/feed');
+			this.props.history.push("/feed");
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.auth.isAuthenticated) {
-			this.props.history.push('/dashboard');
+			this.props.history.push("/dashboard");
 		}
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
@@ -55,37 +58,69 @@ class Login extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<div className="login">
-				<div className="container">
-					<div className="row">
-						<div className="col-md-8 m-auto">
-							<h1 className="display-4 text-center">Log In</h1>
-							<p className="lead text-center">
-								Sign in to your SocialNetwork account
-							</p>
-							<form onSubmit={this.onSubmit}>
-								<TextFieldGroup
-									name="email"
+			<div className="white-back">
+				<Container>
+					<div className="login">
+						<div className="login-left">
+							<h2 className="login-left-title">
+								Sign in to{" "}
+								<span>
+									Dev<span className="subtitle">Hub</span>
+								</span>
+							</h2>
+
+							<Form onSubmit={this.onSubmit}>
+								<Form.Input
+									label="Email Address"
 									placeholder="Email Address"
-									type="email"
+									name="email"
 									value={this.state.email}
 									onChange={this.onChange}
-									error={errors.email}
+									error={errors.email ? errors.email : null}
 								/>
-								<TextFieldGroup
-									name="password"
-									placeholder="Password"
+								<Form.Input
+									fluid
 									type="password"
+									label="Password"
+									placeholder="Password"
+									name="password"
 									value={this.state.password}
 									onChange={this.onChange}
-									error={errors.password}
+									error={errors.password ? errors.password : null}
 								/>
+								<br />
+								<Button primary type="submit">
+									Sign in
+								</Button>
+								<Link to="/register">Register</Link>
+							</Form>
 
-								<input type="submit" className="btn btn-info btn-block mt-4" />
-							</form>
+							{/* <form onSubmit={this.onSubmit}>
+							<TextFieldGroup
+								name="email"
+								placeholder="Email Address"
+								type="email"
+								value={this.state.email}
+								onChange={this.onChange}
+								error={errors.email}
+							/>
+							<TextFieldGroup
+								name="password"
+								placeholder="Password"
+								type="password"
+								value={this.state.password}
+								onChange={this.onChange}
+								error={errors.password}
+							/>
+
+							<input type="submit" />
+						</form> */}
+						</div>
+						<div className="login-right">
+							<img src={loginsvg} alt="login" />
 						</div>
 					</div>
-				</div>
+				</Container>
 			</div>
 			// <Grid
 			// 	textAlign="center"

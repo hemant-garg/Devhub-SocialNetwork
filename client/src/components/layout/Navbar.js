@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Icon, Dropdown } from 'semantic-ui-react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { Container } from 'semantic-ui-react';
-import { logoutUser } from '../../actions/authActions';
-import { clearCurrentProfile } from '../../actions/profileActions';
-import Button from '../common/Button.js';
-import SearchBox from '../SearchBox/SearchBox';
-import './Navbar.scss';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Icon, Dropdown } from "semantic-ui-react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { Container } from "semantic-ui-react";
+import { logoutUser } from "../../actions/authActions";
+import { clearCurrentProfile } from "../../actions/profileActions";
+import Button from "../common/Button.js";
+import SearchBox from "../SearchBox/SearchBox";
+import "./Navbar.scss";
 // import '../../variables.scss';
 
 class Navbar extends Component {
-	state = { activeItem: 'home' };
+	state = { activeItem: "home" };
 
 	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -27,38 +27,38 @@ class Navbar extends Component {
 		const { activeItem } = this.state;
 		const { handle } = this.props;
 		const { user, isAuthenticated } = this.props.auth;
-		console.log('nav', this.props.auth);
+		console.log("nav", this.props.auth);
 		const authLinks = (
-			<div style={{ display: 'flex', alignItems: 'center' }}>
+			<div style={{ display: "flex", alignItems: "center" }}>
 				<img
 					src={user.avatar}
 					alt={user.name}
 					style={{
-						width: '30px',
-						marginRight: '10px',
-						alignSelf: 'center',
-						borderRadius: '50%'
+						width: "30px",
+						marginRight: "10px",
+						alignSelf: "center",
+						borderRadius: "50%"
 					}}
 				/>
 				<Dropdown text={`Hi, ${user.name}`}>
 					<Dropdown.Menu>
 						<Dropdown.Divider />
 						<Dropdown.Item
-							style={{ marginLeft: '0' }}
+							style={{ marginLeft: "0" }}
 							as={Link}
 							to={`/profile/${user.handle}`}
 							icon="user"
 							text={user.name}
 						/>
 						<Dropdown.Item
-							style={{ marginLeft: '0' }}
+							style={{ marginLeft: "0" }}
 							as={Link}
 							to="/dashboard"
 							icon="edit"
 							text="Edit Profile"
 						/>
 						<Dropdown.Item
-							style={{ marginLeft: '0' }}
+							style={{ marginLeft: "0" }}
 							as={Link}
 							to="/feed"
 							icon="book"
@@ -67,7 +67,7 @@ class Navbar extends Component {
 						<Dropdown.Divider />
 
 						<Dropdown.Item
-							style={{ marginLeft: '0' }}
+							style={{ marginLeft: "0" }}
 							as="a"
 							icon="sign-out"
 							onClick={this.onLogoutClick}
@@ -96,11 +96,11 @@ class Navbar extends Component {
 					<nav className="navbar">
 						<div className="navbar-left">
 							<Link to="/">
-								<Icon size="big" name="linkedin" />
+								Dev<span>Hub</span>
 							</Link>
-							<Link to="/profiles">Developers</Link>
+							{/* <Link to="/profiles">Developers</Link> */}
 						</div>
-						<SearchBox />
+						{isAuthenticated ? <SearchBox /> : null}
 						<div className="navbar-right">
 							{isAuthenticated ? authLinks : guestLinks}
 						</div>
