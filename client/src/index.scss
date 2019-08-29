@@ -16,7 +16,16 @@ body {
 
 html {
 	box-sizing: border-box;
-	font-size: 10px;
+	font-size: 14px !important;
+	@media screen and (max-width: 1000px) {
+		font-size: 13px !important;
+	}
+	@media screen and (max-width: 800px) {
+		font-size: 12px !important;
+	}
+	@media screen and (max-width: 600px) {
+		font-size: 12px !important;
+	}
 }
 
 code {
@@ -46,4 +55,13 @@ code {
 }
 .mt2 {
 	margin-top: 2rem;
+}
+
+textarea::placeholder {
+	@media screen and (max-width: 500px) {
+		font-size: 1.2rem;
+	}
+	@media screen and (max-width: 400px) {
+		font-size: 1.1rem;
+	}
 }

@@ -1,15 +1,27 @@
-@import '../../variables';
+@import "../../variables";
 
 .profile {
 	display: flex;
+	padding: 1.5rem 0;
 	flex-wrap: wrap;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 	color: $dark-text-2;
+
+	@media screen and (max-width: 800px) {
+		flex-direction: column;
+		align-items: center;
+	}
 	&-left {
 		width: 25%;
 		text-align: center;
-		font-family: 'Montserrat', sans-serif;
+		font-family: "Montserrat", sans-serif;
+		box-sizing: border-box;
 		padding: 2rem 0.5rem 1rem 0;
+		@media screen and (max-width: 800px) {
+			width: 90%;
+			padding: 0;
+			margin-top: 1rem;
+		}
 		& h3 {
 			font-size: 1.2rem;
 		}
@@ -25,6 +37,10 @@
 		color: $dark-text-2;
 		width: 50%;
 		padding: 2rem 1rem;
+		@media screen and (max-width: 800px) {
+			width: 90%;
+			padding: 0;
+		}
 	}
 
 	&-right {
@@ -32,6 +48,10 @@
 		color: $dark-text-2;
 		padding: 2rem 0 1rem 0.5rem;
 		align-items: center;
+
+		@media screen and (max-width: 800px) {
+			width: 90%;
+		}
 		&-top {
 			display: flex;
 			& div {

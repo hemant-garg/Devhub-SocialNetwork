@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-import { Divider } from 'semantic-ui-react';
-import './Feed.scss';
+import { Divider } from "semantic-ui-react";
+import "./Feed.scss";
 
 class FeedRight extends Component {
 	render() {
@@ -15,7 +15,7 @@ class FeedRight extends Component {
 			padding: 2rem 1rem;
 			position: sticky;
 			top: 90px;
-			font-family: 'Montserrat', sans-serif;
+			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
 		return (
@@ -34,7 +34,7 @@ class FeedRight extends Component {
 						</div>
 					</div>
 					<Divider />
-					<div style={{ textAlign: 'center' }}>
+					<div style={{ textAlign: "center" }}>
 						<Link to="/profile/manishgarg">View Profile</Link>
 					</div>
 				</Segment>

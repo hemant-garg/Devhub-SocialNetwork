@@ -22,7 +22,7 @@ class ProfileLeft extends Component {
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 			margin-bottom: 2rem;
 			background-color: #fff;
-			padding: 2rem 1.5rem;
+			padding: 2rem 1.3rem;
 			position: sticky;
 			top: 90px;
 			font-family: "Montserrat", sans-serif;

@@ -57,7 +57,7 @@ class App extends Component {
 					<div className="App">
 						<Navbar />
 						<Route exact path="/" component={Landing} />
-						<div className="container">
+						<div style={{ marginTop: "-1.2rem" }}>
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/register" component={Register} />
 							<Route exact path="/profiles" component={Profiles} />

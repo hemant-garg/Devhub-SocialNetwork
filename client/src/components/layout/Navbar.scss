@@ -3,7 +3,6 @@
 .navbar-container {
 	position: fixed;
 	background-color: #fff;
-	// box-shadow: 0 3px 3px -3px $light-text;
 	top: 0;
 	z-index: 10;
 	padding: 1.3rem;
@@ -20,6 +19,7 @@
 	justify-content: space-between;
 	align-items: center;
 	color: $dark-text;
+
 	& a {
 		color: $dark-text;
 	}
@@ -48,6 +48,13 @@
 			}
 		}
 	}
+
+	&-middle {
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+	}
+
 	&-right {
 		font-size: 1rem;
 		& a {

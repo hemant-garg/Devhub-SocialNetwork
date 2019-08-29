@@ -9,7 +9,8 @@ import {
 	Image,
 	Message,
 	Segment,
-	Container
+	Container,
+	Divider
 } from "semantic-ui-react";
 
 import { connect } from "react-redux";
@@ -63,11 +64,10 @@ class Login extends Component {
 					<div className="login">
 						<div className="login-left">
 							<h2 className="login-left-title">
-								Sign in to{" "}
-								<span>
-									Dev<span className="subtitle">Hub</span>
-								</span>
+								Sign in to Dev<span>Hub</span>
 							</h2>
+
+							<Divider />
 
 							<Form onSubmit={this.onSubmit}>
 								<Form.Input
@@ -89,10 +89,12 @@ class Login extends Component {
 									error={errors.password ? errors.password : null}
 								/>
 								<br />
-								<Button primary type="submit">
-									Sign in
-								</Button>
-								<Link to="/register">Register</Link>
+								<div className="login-left-bottom">
+									<Button primary type="submit">
+										Sign in
+									</Button>
+									<Link to="/register">Register</Link>
+								</div>
 							</Form>
 
 							{/* <form onSubmit={this.onSubmit}>

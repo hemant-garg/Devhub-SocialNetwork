@@ -6,7 +6,7 @@ import { registerUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 import registersvg from "./signup.jpg";
 import "./auth.scss";
-import { Container, Form, Button } from "semantic-ui-react";
+import { Container, Form, Button, Divider } from "semantic-ui-react";
 class Register extends Component {
 	constructor() {
 		super();
@@ -61,12 +61,9 @@ class Register extends Component {
 						</div>
 						<div className="register-right">
 							<h2 className="register-right-title">
-								Join{" "}
-								<span>
-									Dev<span className="subtitle">Hub</span>
-								</span>
+								Join Dev<span>Hub</span>
 							</h2>
-
+							<Divider />
 							<Form noValidate onSubmit={this.onSubmit}>
 								<Form.Input
 									label="Name"
@@ -115,10 +112,12 @@ class Register extends Component {
 										error={errors.password2 ? errors.password2 : null}
 									/>
 								</Form.Group>
-								<Button primary type="submit">
-									Register
-								</Button>
-								<Link to="/login">Sign in</Link>
+								<div className="register-right-bottom">
+									<Button primary type="submit">
+										Register
+									</Button>
+									<Link to="/login">Sign in</Link>
+								</div>
 							</Form>
 
 							{/* <form noValidate onSubmit={this.onSubmit}>

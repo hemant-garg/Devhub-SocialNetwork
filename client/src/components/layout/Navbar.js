@@ -100,7 +100,9 @@ class Navbar extends Component {
 							</Link>
 							{/* <Link to="/profiles">Developers</Link> */}
 						</div>
-						{isAuthenticated ? <SearchBox /> : null}
+						<div className="navbar-middle">
+							{isAuthenticated ? <SearchBox /> : null}
+						</div>
 						<div className="navbar-right">
 							{isAuthenticated ? authLinks : guestLinks}
 						</div>

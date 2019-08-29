@@ -1,13 +1,22 @@
-@import '../../variables';
+@import "../../variables";
 
 .postform-bottom {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
+	@media screen and (max-width: 800px) {
+		font-size: 1.1rem;
+	}
+	@media screen and (max-width: 500px) {
+		font-size: 1rem;
+	}
+	@media screen and (max-width: 400px) {
+		font-size: 0.93rem;
+		& span {
+			margin-left: 8px !important;
+		}
+	}
 	& button {
-		// padding-left: 2rem!important;
-		// padding-right: 2rem!important;
 		background-color: $main !important;
 	}
 }
@@ -45,7 +54,7 @@
 		padding-top: 5px;
 		margin-top: 2rem;
 		// justify-content: space-between;
-		font-family: 'Montserrat', sans-serif;
+		font-family: "Montserrat", sans-serif;
 
 		& i {
 			cursor: pointer;
