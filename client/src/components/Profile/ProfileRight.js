@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Divider, Icon } from "semantic-ui-react";
 import "./Profile.scss";
 import ProfileGithub from "./ProfileGithub";
-import EditGithub from "../edit-profile/EditGithub";
 
 class FeedRight extends Component {
 	state = {
@@ -16,7 +15,7 @@ class FeedRight extends Component {
 	};
 
 	render() {
-		const { profile, user } = this.props;
+		const { profile } = this.props;
 		const { githubFormOpen } = this.state;
 		const Segment = styled.div`
 			border-radius: 0.5rem;
@@ -32,21 +31,8 @@ class FeedRight extends Component {
 		return (
 			<section className="profile-right">
 				<Segment>
-					<div className="experience-top">
-						<h5>Latest Github Repos:</h5>
-						{profile.user._id === user.id ? (
-							<Icon
-								onClick={this.handleGithubForm}
-								size="large"
-								style={{ fontSize: "1.15rem" }}
-								link
-								name={githubFormOpen ? "close" : "pencil"}
-							/>
-						) : null}
-					</div>
-
+					<h5>Latest Github Repos:</h5>
 					<Divider />
-					{githubFormOpen && <EditGithub profile={profile} />}
 					{!githubFormOpen && (
 						<p>
 							{profile.githubusername ? (

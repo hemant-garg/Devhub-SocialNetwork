@@ -68,27 +68,19 @@ class ProfileLeft extends Component {
 								rel="noopener noreferrer"
 								href={profile.website}
 							>
-								<Icon size="big" color="grey" name="globe" />
+								<Icon size="big" color="violet" name="globe" />
 							</a>
 						)}
-						{isEmpty(profile.social && profile.social.twitter) ? null : (
+						{isEmpty(profile.githubusername) ? null : (
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
-								href={profile.social.twitter}
+								href={`https:github.com/${profile.githubusername}`}
 							>
-								<Icon size="big" color="blue" name="twitter" />
+								<Icon size="big" color="grey" name="github" />
 							</a>
 						)}
-						{isEmpty(profile.social && profile.social.facebook) ? null : (
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href={profile.social.facebook}
-							>
-								<Icon size="big" color="violet" name="facebook" />
-							</a>
-						)}
+
 						{isEmpty(profile.social && profile.social.linkedin) ? null : (
 							<a
 								target="_blank"

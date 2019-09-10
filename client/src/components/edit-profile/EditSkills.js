@@ -6,7 +6,7 @@ import { Form, Button, Label } from "semantic-ui-react";
 import InputGroup from "../common/InputGroup";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
 
-import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import { addSkills, getCurrentProfile } from "../../actions/profileActions";
 import isEmpty from "../../validation/isEmpty";
 
 class EditSkills extends Component {
@@ -22,7 +22,6 @@ class EditSkills extends Component {
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
 		}
-		console.log("nextProps", nextProps);
 		// if (nextProps.profile.profile) {
 		// 	const profile = nextProps.profile.profile;
 		// 	const skillsCSV = profile.skills.join(',');
@@ -43,7 +42,7 @@ class EditSkills extends Component {
 			skills: this.state.skills
 		};
 		// console.log("data sent: ", profileData);
-		this.props.createProfile(profileData, this.props.history);
+		this.props.addSkills(profileData);
 	};
 
 	render() {
@@ -92,5 +91,5 @@ const mapStateToProps = ({ errors }) => {
 
 export default connect(
 	mapStateToProps,
-	{ createProfile }
+	{ addSkills }
 )(withRouter(EditSkills));

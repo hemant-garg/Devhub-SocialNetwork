@@ -6,7 +6,7 @@ import { Form, Button, Label } from "semantic-ui-react";
 import InputGroup from "../common/InputGroup";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
 
-import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import { addBio, getCurrentProfile } from "../../actions/profileActions";
 import isEmpty from "../../validation/isEmpty";
 
 class EditBio extends Component {
@@ -42,7 +42,7 @@ class EditBio extends Component {
 			bio: this.state.bio
 		};
 		// console.log("data sent: ", profileData);
-		this.props.createProfile(profileData, this.props.history);
+		this.props.addBio(profileData);
 	};
 
 	render() {
@@ -65,15 +65,6 @@ class EditBio extends Component {
 							placeholder="Add your bio here.."
 						/>
 
-						{/*}	<Form.Input
-							name="youtube"
-							value={this.state.youtube}
-							onChange={this.onChange}
-							fluid
-							error={errors.youtube ? errors.youtube : null}
-							transparent
-							placeholder="Youtube"
-        /> */}
 						<div style={{ textAlign: "center", marginTop: "2rem" }}>
 							<Button type="submit" size="tiny" circular content="Submit" />
 						</div>
@@ -89,5 +80,5 @@ const mapStateToProps = ({ errors }) => {
 
 export default connect(
 	mapStateToProps,
-	{ createProfile }
+	{ addBio }
 )(withRouter(EditBio));

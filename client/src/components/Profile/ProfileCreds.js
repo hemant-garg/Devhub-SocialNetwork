@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { Divider, Icon } from 'semantic-ui-react';
-import Moment from 'react-moment';
-import isEmpty from '../../validation/isEmpty';
-import AddExperience from '../add-credentials/AddExperience';
-import AddEducation from '../add-credentials/AddEducation';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { Divider, Icon } from "semantic-ui-react";
+import Moment from "react-moment";
+import isEmpty from "../../validation/isEmpty";
+import AddExperience from "../add-credentials/AddExperience";
+import AddEducation from "../add-credentials/AddEducation";
 
 import {
 	deleteExperience,
 	deleteEducation
-} from '../../actions/profileActions';
+} from "../../actions/profileActions";
 class ProfileCreds extends Component {
 	state = { expFormOpen: false, eduFormOpen: false };
+
+	// componentDidUpdate(prevProps) {
+	// 	this.setState({ expFormOpen: false });
+	// }
+
 	handleExpForm = () => {
 		this.setState(prev => ({ expFormOpen: !prev.expFormOpen }));
 	};
@@ -34,11 +39,11 @@ class ProfileCreds extends Component {
 			margin-bottom: 2rem;
 			background-color: #fff;
 			padding: 2rem 1.5rem;
-			font-family: 'Montserrat', sans-serif;
+			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
 		const { education, experience, userId, auth } = this.props;
-		console.log('profilecreds', this.props);
+		console.log("profilecreds", this.props);
 		const expItems = experience.map(exp => (
 			<div className="experience" key={exp._id}>
 				<Divider />
@@ -58,7 +63,7 @@ class ProfileCreds extends Component {
 				<div className="experience-date">
 					{<Moment format="YYYY/MM/DD">{exp.from}</Moment>} -
 					{exp.current ? (
-						' Present'
+						" Present"
 					) : (
 						<Moment format="YYYY/MM/DD"> {exp.to}</Moment>
 					)}
@@ -86,11 +91,11 @@ class ProfileCreds extends Component {
 				</div>
 				<div className="experience-company">{edu.school}</div>
 
-				<div style={{ fontSize: '.9rem' }}>{edu.fieldofstudy}</div>
+				<div style={{ fontSize: ".9rem" }}>{edu.fieldofstudy}</div>
 				<div className="experience-date">
 					{<Moment format="YYYY/MM/DD">{edu.from}</Moment>} -
 					{edu.current ? (
-						' Present'
+						" Present"
 					) : (
 						<Moment format="YYYY/MM/DD"> {edu.to}</Moment>
 					)}
@@ -101,7 +106,7 @@ class ProfileCreds extends Component {
 			</div>
 		));
 
-		console.log(this.props);
+		console.log("profile creds", this.props);
 		const { eduFormOpen, expFormOpen } = this.state;
 		return (
 			<div>
@@ -113,7 +118,7 @@ class ProfileCreds extends Component {
 								onClick={this.handleExpForm}
 								size="large"
 								link
-								name={expFormOpen ? 'minus circle' : 'add circle'}
+								name={expFormOpen ? "minus circle" : "add circle"}
 							/>
 						) : null}
 					</div>
@@ -137,7 +142,7 @@ class ProfileCreds extends Component {
 								onClick={this.handleEduForm}
 								size="large"
 								link
-								name={eduFormOpen ? 'minus circle' : 'add circle'}
+								name={eduFormOpen ? "minus circle" : "add circle"}
 							/>
 						) : null}
 					</div>

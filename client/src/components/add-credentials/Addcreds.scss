@@ -1,10 +1,15 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .form {
 	font-size: 0.9rem !important;
+
 	// margin: 0.5rem 0rem 1.5rem 0rem;
 	&-pink {
 		background-color: $second-3;
+		& .form-main .ui.form .field {
+			text-align: left;
+		}
+
 		& .form-header {
 			background-color: #df6f84;
 		}
