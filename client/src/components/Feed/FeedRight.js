@@ -35,7 +35,7 @@ class FeedRight extends Component {
 					</div>
 					<Divider />
 					<div style={{ textAlign: "center" }}>
-						<Link to="/profile/manishgarg">View Profile</Link>
+						<Link to="/profile/hemantgr6">View Profile</Link>
 					</div>
 				</Segment>
 			</section>

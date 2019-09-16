@@ -50,20 +50,20 @@ class Navbar extends Component {
 							icon="user"
 							text={user.name}
 						/>
-						<Dropdown.Item
+						{/* <Dropdown.Item
 							style={{ marginLeft: "0" }}
 							as={Link}
 							to="/dashboard"
 							icon="edit"
 							text="Edit Profile"
-						/>
-						<Dropdown.Item
+						/> */}
+						{/* <Dropdown.Item
 							style={{ marginLeft: "0" }}
 							as={Link}
 							to="/feed"
 							icon="book"
 							text="My Posts"
-						/>
+						/> */}
 						<Dropdown.Divider />
 
 						<Dropdown.Item

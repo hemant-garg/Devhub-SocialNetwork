@@ -30,7 +30,7 @@ class FeedLeft extends Component {
 					<div>
 						<img src={user.avatar} alt={user.name} />
 						<h3>{user.name}</h3>
-						<p>A full stack Web developer who plays guitar.</p>
+						<p style={{ marginTop: "-.4rem" }}>{user.handle}</p>
 					</div>
 					<br />
 					<Divider />

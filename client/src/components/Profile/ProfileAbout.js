@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { deleteAccount } from '../../actions/profileActions.js';
-import styled from 'styled-components';
-import { Label, Divider, Button, Icon } from 'semantic-ui-react';
-import isEmpty from '../../validation/isEmpty';
-import EditSkills from '../edit-profile/EditSkills.js';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { deleteAccount } from "../../actions/profileActions.js";
+import styled from "styled-components";
+import { Label, Divider, Button, Icon } from "semantic-ui-react";
+import isEmpty from "../../validation/isEmpty";
+import EditSkills from "../edit-profile/EditSkills.js";
 
 class ProfileAbout extends Component {
 	state = {
@@ -26,7 +26,7 @@ class ProfileAbout extends Component {
 			margin-bottom: 2rem;
 			background-color: #fff;
 			padding: 2rem 1.5rem;
-			font-family: 'Montserrat', sans-serif;
+			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
 		const { profile, user } = this.props;
@@ -41,9 +41,9 @@ class ProfileAbout extends Component {
 							<Icon
 								onClick={this.handleSkillForm}
 								size="large"
-								style={{ fontSize: '1.15rem' }}
+								style={{ fontSize: "1.15rem" }}
 								link
-								name={skillFormOpen ? 'close' : 'pencil'}
+								name={skillFormOpen ? "close" : "pencil"}
 							/>
 						) : null}
 					</div>
@@ -52,8 +52,12 @@ class ProfileAbout extends Component {
 						<div>
 							<Divider />
 							{profile.skills.map((skill, i) => (
-								<span style={{ marginRight: '1rem' }} key={i}>
-									<Label circular color="blue">
+								<span style={{ marginRight: "1rem" }} key={i}>
+									<Label
+										style={{ marginBottom: ".5rem" }}
+										circular
+										color="blue"
+									>
 										{skill}
 									</Label>
 								</span>

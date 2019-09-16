@@ -68,7 +68,7 @@ class ProfileLeft extends Component {
 								rel="noopener noreferrer"
 								href={profile.website}
 							>
-								<Icon size="big" color="violet" name="globe" />
+								<Icon size="big" color="black" name="globe" />
 							</a>
 						)}
 						{isEmpty(profile.githubusername) ? null : (

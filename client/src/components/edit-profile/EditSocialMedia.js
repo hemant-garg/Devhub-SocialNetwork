@@ -15,9 +15,15 @@ class EditSocialMedia extends Component {
 		this.state = {
 			website: this.props.profile.website,
 			githubusername: this.props.profile.githubusername,
-			instagram: this.props.profile.social.instagram,
-			youtube: this.props.profile.social.youtube,
-			linkedin: this.props.profile.social.linkedin,
+			instagram: this.props.profile.social
+				? this.props.profile.social.instagram
+				: "",
+			youtube: this.props.profile.social
+				? this.props.profile.social.youtube
+				: "",
+			linkedin: this.props.profile.social
+				? this.props.profile.social.linkedin
+				: "",
 			errors: {}
 		};
 	}
@@ -29,7 +35,6 @@ class EditSocialMedia extends Component {
 
 		if (nextProps.profile.profile) {
 			const profile = nextProps.profile.profile;
-
 			// Check if profile build doesnt exist
 			profile.website = !isEmpty(profile.website) ? profile.website : "";
 			profile.githubusername = !isEmpty(profile.githubusername)
@@ -75,7 +80,7 @@ class EditSocialMedia extends Component {
 
 	render() {
 		const { errors } = this.state;
-		console.log("social eroor", errors);
+		// console.log("social eroor", errors);
 		return (
 			<div className="form form-pink">
 				{/*<Link to="/dashboard">Go Back</Link>*/}
@@ -116,7 +121,7 @@ class EditSocialMedia extends Component {
 							value={this.state.instagram}
 							onChange={this.onChange}
 							fluid
-							error={errors.instagram ? errors.instagram : null}
+							// error={errors.instagram ? errors.instagram : null}
 							transparent
 							placeholder="Instagram"
 						/>
