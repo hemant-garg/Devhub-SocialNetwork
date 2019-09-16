@@ -1,0 +1,87 @@
+@import "../../variables";
+
+.feed {
+	display: flex;
+	flex-wrap: wrap;
+	font-family: "Montserrat", sans-serif;
+	color: #444;
+	padding-top: 1.5rem;
+	@media screen and (max-width: 800px) {
+		flex-direction: column;
+		align-items: center;
+	}
+	&-left {
+		width: 25%;
+		text-align: center;
+		font-family: "Montserrat", sans-serif;
+		padding: 2rem 0.5rem 1rem 0;
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+		& h3 {
+			font-size: 1.2rem;
+		}
+		& img {
+			border-radius: 50%;
+			max-width: 40%;
+		}
+		& p {
+			color: #555;
+			font-size: 0.9rem;
+		}
+	}
+	&-middle {
+		width: 50%;
+		padding: 2rem 1rem;
+		@media screen and (max-width: 800px) {
+			width: 80%;
+			margin-top: -1.5rem;
+		}
+		@media screen and (max-width: 600px) {
+			width: 90%;
+		}
+		@media screen and (max-width: 500px) {
+			width: 100%;
+		}
+	}
+
+	&-right {
+		width: 25%;
+		color: $dark-text;
+		padding: 2rem 0 1rem 0.5rem;
+		align-items: center;
+		&-top {
+			display: flex;
+			// @media screen and (max-width: 800px) {
+			// 	justify-content: center;
+			// }
+			& div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				text-align: left;
+				& p {
+					font-size: 0.9rem;
+					color: $dark-text-2;
+				}
+			}
+			& img {
+				width: 50px;
+				border-radius: 50%;
+				margin-right: 1rem;
+			}
+		}
+		@media screen and (max-width: 800px) {
+			// text-align: center;
+			width: 80%;
+			margin-top: -2rem;
+			display: none;
+		}
+		@media screen and (max-width: 600px) {
+			width: 90%;
+		}
+		@media screen and (max-width: 500px) {
+			width: 100%;
+		}
+	}
+}

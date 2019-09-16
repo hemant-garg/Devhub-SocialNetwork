@@ -1,0 +1,117 @@
+@import "../../variables.scss";
+
+.form {
+	font-size: 0.9rem !important;
+
+	// margin: 0.5rem 0rem 1.5rem 0rem;
+	&-pink {
+		background-color: $second-3;
+		& .form-main .ui.form .field {
+			text-align: left;
+		}
+
+		& .form-header {
+			background-color: #df6f84;
+		}
+		& .ui.circular.button {
+			color: $second-3;
+		}
+	}
+
+	&-red {
+		background-color: $second-4;
+		& .form-header {
+			background-color: #e76262;
+		}
+		& .ui.circular.button {
+			color: $second-4;
+		}
+	}
+
+	&-blue {
+		background-color: $second-5;
+		& .form-header {
+			background-color: #4c93e9;
+		}
+		& .ui.circular.button {
+			color: $second-5;
+		}
+	}
+
+	&-green {
+		background-color: $second-2;
+		& .form-header {
+			background-color: rgb(4, 158, 86);
+		}
+		& .ui.circular.button {
+			color: $second-2;
+		}
+	}
+
+	&-yellow {
+		background-color: $second-1;
+		& .form-header {
+			background-color: rgb(211, 176, 1);
+		}
+		& .ui.circular.button {
+			color: $second-1;
+		}
+	}
+	& .ui.circular.button {
+		background-color: #fefefe;
+		padding: 0.8rem 3rem;
+	}
+	&-header {
+		position: relative;
+		padding: 1.5rem;
+		color: #fefefe;
+	}
+	&-main {
+		padding: 1.5rem;
+		padding-top: 1rem;
+
+		& .ui.icon.input > i.link.icon {
+			color: #fefefe;
+		}
+		& .ui.checkbox label {
+			font-size: 0.9rem;
+			margin-top: 2rem;
+			color: #fefefe !important;
+		}
+		& .ui.checkbox .box:before,
+		.ui.checkbox label:before {
+			width: 15px;
+			height: 15px;
+		}
+
+		& .ui.form .field .ui.input {
+			border-bottom: 1px solid #fefefe;
+			margin-top: 2rem;
+			padding-bottom: 0.8rem !important;
+		}
+		& .ui.form .field {
+			margin-bottom: 0;
+		}
+		& .ui.pointing.label {
+			font-size: 0.7rem;
+		}
+
+		& textarea {
+			color: #fefefe !important;
+			font-weight: bold;
+			margin-top: 1.5rem !important;
+			&::placeholder {
+				color: #fefefe !important;
+				font-weight: normal;
+			}
+		}
+		& input {
+			color: #fefefe !important;
+			font-weight: bold;
+			&::placeholder {
+				color: #fefefe !important;
+				font-weight: normal;
+			}
+		}
+	}
+}

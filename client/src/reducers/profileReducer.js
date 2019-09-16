@@ -3,7 +3,7 @@ import {
 	GET_PROFILE,
 	GET_PROFILES,
 	CLEAR_CURRENT_PROFILE
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
 	profile: null,
@@ -19,7 +19,6 @@ export default function(state = initialState, action) {
 				loading: true
 			};
 		case GET_PROFILE:
-			// console.log(action.payload);
 			return {
 				...state,
 				profile: action.payload,

@@ -1,0 +1,67 @@
+@import "variables.scss";
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	margin-top: 75px !important;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// background-color: #f5f5f5 !important;
+	background: transparent !important;
+}
+
+*:not(i) {
+	font-family: "Montserrat", sans-serif !important;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 14px !important;
+	@media screen and (max-width: 1000px) {
+		font-size: 13px !important;
+	}
+	@media screen and (max-width: 800px) {
+		font-size: 12px !important;
+	}
+	@media screen and (max-width: 600px) {
+		font-size: 12px !important;
+	}
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+/* a {
+	text-decoration: none;
+	color: black;
+} */
+
+.main-backcolor {
+	background-color: $main;
+	color: #fff;
+}
+.light-text {
+	color: $dark-text-2;
+}
+
+.white-back {
+	background-color: #fff;
+}
+
+.mt1 {
+	margin-top: 1rem;
+}
+.mt2 {
+	margin-top: 2rem;
+}
+
+textarea::placeholder {
+	@media screen and (max-width: 500px) {
+		font-size: 1.2rem;
+	}
+	@media screen and (max-width: 400px) {
+		font-size: 1.1rem;
+	}
+}

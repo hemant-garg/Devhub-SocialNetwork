@@ -1,9 +1,23 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import {
+	Button,
+	Form,
+	Grid,
+	Header,
+	Image,
+	Message,
+	Segment,
+	Container,
+	Divider
+} from "semantic-ui-react";
+
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
-
+import loginsvg from "./login.jpg";
+import "./auth.scss";
 class Login extends Component {
 	constructor() {
 		super();
@@ -16,13 +30,13 @@ class Login extends Component {
 
 	componentDidMount() {
 		if (this.props.auth.isAuthenticated) {
-			this.props.history.push("/dashboard");
+			this.props.history.push("/feed");
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.auth.isAuthenticated) {
-			this.props.history.push("/dashboard");
+			this.props.history.push("/feed");
 		}
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
@@ -45,38 +59,106 @@ class Login extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<div className="login">
-				<div className="container">
-					<div className="row">
-						<div className="col-md-8 m-auto">
-							<h1 className="display-4 text-center">Log In</h1>
-							<p className="lead text-center">
-								Sign in to your SocialNetwork account
-							</p>
-							<form onSubmit={this.onSubmit}>
-								<TextFieldGroup
-									name="email"
+			<div className="white-back">
+				<Container>
+					<div className="login">
+						<div className="login-left">
+							<h2 className="login-left-title">
+								Sign in to Dev<span>Hub</span>
+							</h2>
+
+							<Divider />
+
+							<Form onSubmit={this.onSubmit}>
+								<Form.Input
+									label="Email Address"
 									placeholder="Email Address"
-									type="email"
+									name="email"
 									value={this.state.email}
 									onChange={this.onChange}
-									error={errors.email}
+									error={errors.email ? errors.email : null}
 								/>
-								<TextFieldGroup
-									name="password"
-									placeholder="Password"
+								<Form.Input
+									fluid
 									type="password"
+									label="Password"
+									placeholder="Password"
+									name="password"
 									value={this.state.password}
 									onChange={this.onChange}
-									error={errors.password}
+									error={errors.password ? errors.password : null}
 								/>
+								<br />
+								<div className="login-left-bottom">
+									<Button primary type="submit">
+										Sign in
+									</Button>
+									<Link to="/register">Register</Link>
+								</div>
+							</Form>
 
-								<input type="submit" className="btn btn-info btn-block mt-4" />
-							</form>
+							{/* <form onSubmit={this.onSubmit}>
+							<TextFieldGroup
+								name="email"
+								placeholder="Email Address"
+								type="email"
+								value={this.state.email}
+								onChange={this.onChange}
+								error={errors.email}
+							/>
+							<TextFieldGroup
+								name="password"
+								placeholder="Password"
+								type="password"
+								value={this.state.password}
+								onChange={this.onChange}
+								error={errors.password}
+							/>
+
+							<input type="submit" />
+						</form> */}
+						</div>
+						<div className="login-right">
+							<img src={loginsvg} alt="login" />
 						</div>
 					</div>
-				</div>
+				</Container>
 			</div>
+			// <Grid
+			// 	textAlign="center"
+			// 	style={{ height: '100vh' }}
+			// 	verticalAlign="middle"
+			// >
+			// 	<Grid.Column style={{ maxWidth: 450 }}>
+			// 		<Header as="h2" color="teal" textAlign="center">
+			// 			Log-in to your account
+			// 		</Header>
+			// 		<Form size="large">
+			// 			<Segment stacked>
+			// 				<Form.Input
+			// 					fluid
+			// 					icon="user"
+			// 					iconPosition="left"
+			// 					placeholder="E-mail address"
+			// 				/>
+			// 				<Form.Input
+			// 					fluid
+			// 					icon="lock"
+			// 					iconPosition="left"
+			// 					placeholder="Password"
+			// 					type="password"
+			// 				/>
+
+			// 				<Button color="teal" fluid size="large">
+			// 					Login
+			// 				</Button>
+			// 			</Segment>
+			// 		</Form>
+			// 		<Message>
+			// 			New to us? <a href="#">Sign Up</a>
+			// 		</Message>
+			// 	</Grid.Column>
+			// </Grid>
 		);
 	}
 }

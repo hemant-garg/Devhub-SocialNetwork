@@ -87,13 +87,14 @@ export const createProfile = (data, history) => dispatch => {
 };
 
 // delete account
-export const deleteAccount = () => dispatch => {
+export const deleteAccount = history => dispatch => {
 	if (window.confirm("Are you sure? This CANNOT be undone once deleted")) {
 		axios
 			.delete("/api/profile")
 			.then(res => {
 				localStorage.removeItem("jwtToken");
 				setAuthToken(false);
+				history.push("/register");
 				dispatch({
 					type: SET_CURRENT_USER,
 					payload: {}
@@ -109,12 +110,76 @@ export const deleteAccount = () => dispatch => {
 };
 
 // add Experience
-export const addExperience = (data, history) => dispatch => {
+export const addExperience = data => dispatch => {
 	dispatch(clearErrors());
 
 	axios
 		.post("/api/profile/experience", data)
-		.then(res => history.push("/dashboard"))
+		.then(res => {
+			console.log("response", res);
+			dispatch({
+				type: GET_PROFILE,
+				payload: res.data
+			});
+		})
+		.catch(err =>
+			dispatch({
+				type: GET_ERRORS,
+				payload: err.response.data
+			})
+		);
+};
+
+// add/update Bio
+export const addBio = data => dispatch => {
+	dispatch(clearErrors());
+	axios
+		.post("/api/profile/bio", data)
+		.then(res => {
+			dispatch({
+				type: GET_PROFILE,
+				payload: res.data
+			});
+		})
+		.catch(err =>
+			dispatch({
+				type: GET_ERRORS,
+				payload: err.response.data
+			})
+		);
+};
+
+// add/update Social links
+export const editSocialMedia = data => dispatch => {
+	dispatch(clearErrors());
+	axios
+		.post("/api/profile/social", data)
+		.then(res => {
+			dispatch({
+				type: GET_PROFILE,
+				payload: res.data
+			});
+		})
+		.catch(err =>
+			dispatch({
+				type: GET_ERRORS,
+				payload: err.response.data
+			})
+		);
+};
+
+// add/update Skills
+export const addSkills = data => dispatch => {
+	// console.log("skills", data);
+	dispatch(clearErrors());
+	axios
+		.post("/api/profile/skills", data)
+		.then(res => {
+			dispatch({
+				type: GET_PROFILE,
+				payload: res.data
+			});
+		})
 		.catch(err =>
 			dispatch({
 				type: GET_ERRORS,
@@ -129,7 +194,12 @@ export const addEducation = (data, history) => dispatch => {
 
 	axios
 		.post("/api/profile/education", data)
-		.then(res => history.push("/dashboard"))
+		.then(res =>
+			dispatch({
+				type: GET_PROFILE,
+				payload: res.data
+			})
+		)
 		.catch(err =>
 			dispatch({
 				type: GET_ERRORS,
@@ -140,6 +210,7 @@ export const addEducation = (data, history) => dispatch => {
 
 // delete experience
 export const deleteExperience = id => dispatch => {
+	console.log(id);
 	axios
 		.delete(`/api/profile/experience/${id}`)
 		.then(res =>

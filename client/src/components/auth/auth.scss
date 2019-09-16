@@ -1,0 +1,159 @@
+@import "../../variables.scss";
+
+.container {
+	// background-color: #fff;
+}
+.login {
+	// margin-top: 8rem;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	@media screen and (max-width: 1000px) {
+		margin-top: 8rem;
+	}
+	@media screen and (max-width: 800px) {
+		flex-direction: column-reverse;
+		margin-top: 5rem;
+	}
+
+	&-left {
+		width: 40%;
+		color: #555;
+		@media screen and (max-width: 800px) {
+			width: 60%;
+			margin: 3rem 0;
+			&-bottom {
+				text-align: center;
+			}
+		}
+
+		@media screen and (max-width: 500px) {
+			margin-top: 1rem;
+			width: 70%;
+		}
+		@media screen and (max-width: 400px) {
+			width: 80%;
+		}
+
+		&-title {
+			margin-bottom: 2rem;
+			font-size: 1.6rem;
+			@media screen and (max-width: 800px) {
+				text-align: center;
+			}
+			& span {
+				background-color: $main;
+				color: #fff;
+				padding: 0.2rem 0.4rem;
+				border-radius: 6px;
+				border-top-left-radius: 0;
+				margin-left: 0.4rem;
+			}
+		}
+		& form {
+			width: 80%;
+			@media screen and (max-width: 800px) {
+				width: 100%;
+			}
+			& a {
+				margin-left: 1rem;
+				font-weight: bold;
+				color: #555;
+			}
+		}
+		& .ui.form .field .prompt.label {
+			font-size: 0.7rem !important;
+			margin-bottom: 0.5rem;
+		}
+	}
+	&-right {
+		width: 60%;
+		@media screen and (max-width: 500px) {
+			width: 80%;
+		}
+		@media screen and (max-width: 400px) {
+			width: 90%;
+		}
+
+		& img {
+			width: 100%;
+		}
+	}
+}
+
+.register {
+	display: flex;
+	align-items: center;
+
+	@media screen and (max-width: 1000px) {
+		margin-top: 8rem;
+	}
+
+	& .ui.form .field .prompt.label {
+		font-size: 0.7rem !important;
+		margin-bottom: 0.5rem;
+	}
+	@media screen and (max-width: 700px) {
+		flex-direction: column;
+		margin-top: 0rem;
+	}
+	& form {
+		width: 85%;
+		@media screen and (max-width: 700px) {
+			width: 100%;
+		}
+		& a {
+			margin-left: 1rem;
+			font-weight: bold;
+			color: #555;
+		}
+	}
+	&-left {
+		width: 55%;
+		@media screen and (max-width: 500px) {
+			width: 80%;
+		}
+		@media screen and (max-width: 400px) {
+			width: 90%;
+		}
+		& img {
+			width: 100%;
+		}
+	}
+	&-right {
+		width: 45%;
+		color: #555;
+		@media screen and (max-width: 700px) {
+			width: 60%;
+			margin: 3rem 0;
+			&-bottom {
+				text-align: center;
+				margin-top: 1.5rem;
+			}
+		}
+
+		@media screen and (max-width: 500px) {
+			width: 70%;
+			margin-top: 0rem;
+		}
+		@media screen and (max-width: 400px) {
+			width: 80%;
+		}
+		&-title {
+			margin-bottom: 2rem;
+			font-size: 1.6rem;
+			@media screen and (max-width: 700px) {
+				text-align: center;
+			}
+
+			& span {
+				background-color: $main;
+				color: #fff;
+				padding: 0.2rem 0.4rem;
+				border-radius: 6px;
+				border-top-left-radius: 0;
+				margin-left: 0.4rem;
+			}
+		}
+	}
+}

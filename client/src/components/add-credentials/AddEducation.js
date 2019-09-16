@@ -1,23 +1,29 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextareaFieldGroup from "../common/TextareaFieldGroup";
-import { addEducation } from "../../actions/profileActions";
+import SemanticDatepicker from 'react-semantic-ui-datepickers';
+import ptLocale from 'react-semantic-ui-datepickers/dist/locales/pt-BR';
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+
+import { Form, Button, Label } from 'semantic-ui-react';
+import TextFieldGroup from '../common/TextFieldGroup';
+import TextareaFieldGroup from '../common/TextareaFieldGroup';
+import { addEducation } from '../../actions/profileActions';
+import './Addcreds.scss';
 
 class AddEducation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			school: "",
-			degree: "",
-			fieldofstudy: "",
-			from: "",
-			to: "",
+			school: '',
+			degree: '',
+			fieldofstudy: '',
+			from: '',
+			to: '',
 			current: false,
-			description: "",
+			description: '',
 			errors: {},
 			disabled: false
 		};
@@ -31,6 +37,13 @@ class AddEducation extends Component {
 			disabled: !this.state.disabled,
 			current: !this.state.current
 		});
+	};
+
+	addDateFrom = date => {
+		this.setState({ from: date });
+	};
+	addDateTo = date => {
+		this.setState({ to: date });
 	};
 
 	onChange = e => {
@@ -55,90 +68,83 @@ class AddEducation extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<div>
-				<div className="section add-education">
-					<div className="container">
-						<div className="row">
-							<div className="col-md-8 m-auto">
-								<Link to="/dashboard" className="btn btn-light">
-									Go Back
-								</Link>
-								<h1 className="display-4 text-center">Add Your Education</h1>
-								<p className="lead text-center">
-									Add any school, bootcamp, etc that you have attended
-								</p>
-								<small className="d-block pb-3">* = required field</small>
-								<form onSubmit={this.onSubmit}>
-									<TextFieldGroup
-										name="school"
-										placeholder="* School Or Bootcamp"
-										type="text"
-										value={this.state.school}
-										onChange={this.onChange}
-										error={errors.school}
-									/>
-									<TextFieldGroup
-										name="degree"
-										placeholder="* Degree Or Certificate"
-										type="text"
-										value={this.state.degree}
-										onChange={this.onChange}
-										error={errors.degree}
-									/>
-									<TextFieldGroup
-										name="fieldofstudy"
-										placeholder="* Field Of Study"
-										value={this.state.fieldofstudy}
-										onChange={this.onChange}
-										error={errors.fieldofstudy}
-									/>
-									<h6>* From Date: </h6>
-									<TextFieldGroup
-										name="from"
-										type="date"
-										value={this.state.from}
-										onChange={this.onChange}
-										error={errors.from}
-									/>
-									<h6>* To Date: </h6>
-									<TextFieldGroup
-										name="to"
-										type="date"
-										value={this.state.to}
-										onChange={this.onChange}
-										error={errors.to}
-										disabled={this.state.disabled ? "disabled" : ""}
-									/>
-									<div className="form-check mb-4">
-										<input
-											type="checkbox"
-											className="form-check-input"
-											name="current"
-											value={this.state.current}
-											checked={this.state.current}
-											id="current"
-											onChange={this.onCheck}
-										/>
-										<label htmlFor="current" className="form-check-label">
-											Currently studying here
-										</label>
-									</div>
-									<TextareaFieldGroup
-										name="description"
-										placeholder="Program Description"
-										value={this.state.description}
-										onChange={this.onChange}
-										error={errors.description}
-										info="Tell us about the program that you were in"
-									/>
-									<input
-										type="submit"
-										className="btn btn-info btn-block mt-4"
-									/>
-								</form>
-							</div>
+			<div className="form form-yellow">
+				{/*<Link to="/dashboard">Go Back</Link>*/}
+				<div className="form-header">
+					<h4>Add Your Education</h4>
+				</div>
+				<div className="form-main">
+					<Form onSubmit={this.onSubmit}>
+						<Form.Group widths="equal">
+							<Form.Input
+								name="school"
+								value={this.state.school}
+								onChange={this.onChange}
+								fluid
+								error={errors.school ? errors.school : null}
+								transparent
+								placeholder="School / Institute"
+							/>
+						</Form.Group>
+						<Form.Group widths="equal">
+							<Form.Input
+								name="degree"
+								value={this.state.degree}
+								onChange={this.onChange}
+								fluid
+								error={errors.degree ? errors.degree : null}
+								transparent
+								placeholder="Degree"
+							/>
+							<Form.Input
+								name="fieldofstudy"
+								value={this.state.fieldofstudy}
+								onChange={this.onChange}
+								error={errors.fieldofstudy ? errors.fieldofstudy : null}
+								fluid
+								transparent
+								placeholder="Field of Study"
+							/>
+						</Form.Group>
+						<Form.Group widths="equal">
+							<SemanticDatepicker
+								transparent
+								fluid
+								name="from"
+								error={errors.from ? errors.from : null}
+								value={this.state.from}
+								placeholder="Started From"
+								onDateChange={this.addDateFrom}
+							/>
+							<SemanticDatepicker
+								fluid
+								name="to"
+								value={this.state.to}
+								transparent
+								error={errors.to ? errors.to : null}
+								disabled={this.state.disabled}
+								placeholder="To"
+								onDateChange={this.addDateTo}
+							/>
+						</Form.Group>
+						<Form.Checkbox
+							name="current"
+							checked={this.state.current}
+							onChange={this.onCheck}
+							label="Currently Working here"
+						/>
+						<TextareaFieldGroup
+							name="description"
+							rows={3}
+							placeholder="Description.."
+							value={this.state.description}
+							onChange={this.onChange}
+							error={errors.description}
+						/>
+						<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+							<Button type="submit" size="tiny" circular content="Submit" />
 						</div>
-					</div>
+					</Form>
 				</div>
 			</div>
 		);

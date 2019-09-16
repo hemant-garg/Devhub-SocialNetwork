@@ -4,6 +4,7 @@ const passport = require("passport");
 const router = express.Router();
 
 const validateProfileinput = require("../../validation/profile");
+const validateSocialinput = require("../../validation/socialMedia");
 const validateExperienceInput = require("../../validation/experience");
 const validateEducationInput = require("../../validation/education");
 // Load profile model
@@ -48,6 +49,7 @@ router.get(
 // @desc    get any user profile
 // @access  public
 router.get("/handle/:handle", (req, res) => {
+	console.log("handle");
 	const errors = {};
 	Profile.findOne({
 		handle: req.params.handle
@@ -166,21 +168,113 @@ router.post(
 					).then(profile => res.json(profile));
 				} else {
 					// create
-
 					// Check if handle exists
-					Profile.findOne({
-						handle: profileFields.handle
-					}).then(profile => {
-						if (profile) {
-							errors.handle = "That handle already exists";
-							res.status(400).json(errors);
-						}
-
-						new Profile(profileFields)
-							.save()
-							.then(profile => res.json(profile));
-					});
+					// Profile.findOne({
+					// 	handle: profileFields.handle
+					// }).then(profile => {
+					// 	if (profile) {
+					// 		errors.handle = "That handle already exists";
+					// 		res.status(400).json(errors);
+					// 	}
+					// 	new Profile(profileFields)
+					// 		.save()
+					// 		.then(profile => res.json(profile));
+					// });
 				}
+			})
+			.catch(err => res.status(404).json(err));
+	}
+);
+
+// @route   POST api/profile/bio
+// @desc    edit User Bio
+// @access  private
+router.post(
+	"/bio",
+	passport.authenticate("jwt", {
+		session: false
+	}),
+	(req, res) => {
+		// const { errors, isValid } = validateProfileinput(req.body);
+		// if (!isValid) {
+		// 	return res.status(400).json(errors);
+		// }
+
+		Profile.findOne({
+			user: req.user.id
+		})
+			.populate("user", ["name", "avatar", "email"])
+			.then(profile => {
+				const { bio } = req.body;
+				profile.bio = bio;
+				profile.save().then(profile => res.json(profile));
+			})
+			.catch(err => res.status(404).json(err));
+	}
+);
+
+// @route   POST api/profile/skills
+// @desc    edit User Skills
+// @access  private
+router.post(
+	"/skills",
+	passport.authenticate("jwt", {
+		session: false
+	}),
+	(req, res) => {
+		// const { errors, isValid } = validateProfileinput(req.body);
+		// if (!isValid) {
+		// 	return res.status(400).json(errors);
+		// }
+		const { skills } = req.body;
+
+		Profile.findOne({
+			user: req.user.id
+		})
+			.populate("user", ["name", "avatar", "email"])
+			.then(profile => {
+				if (typeof skills !== "undefined") {
+					profile.skills = skills.split(",");
+				}
+
+				// const newBio = {
+				// 	bio
+				// };
+
+				profile.save().then(profile => res.json(profile));
+			})
+			.catch(err => res.status(404).json(err));
+	}
+);
+
+// @route   POST api/profile/social
+// @desc    add/update User social links
+// @access  private
+router.post(
+	"/social",
+	passport.authenticate("jwt", {
+		session: false
+	}),
+	(req, res) => {
+		const { errors, isValid } = validateSocialinput(req.body);
+		if (!isValid) {
+			return res.status(400).json(errors);
+		}
+		// console.log("rew", req.body);
+		const { githubusername, website, youtube, linkedin, instagram } = req.body;
+
+		console.log(errors);
+		Profile.findOne({
+			user: req.user.id
+		})
+			.populate("user", ["name", "avatar", "email"])
+			.then(profile => {
+				profile.githubusername = githubusername;
+				profile.website = website;
+				profile.social.youtube = youtube;
+				profile.social.linkedin = linkedin;
+				profile.social.instagram = instagram;
+				profile.save().then(profile => res.json(profile));
 			})
 			.catch(err => res.status(404).json(err));
 	}
@@ -203,6 +297,7 @@ router.post(
 		Profile.findOne({
 			user: req.user.id
 		})
+			.populate("user", ["name", "avatar", "email"])
 			.then(profile => {
 				const {
 					title,
@@ -247,6 +342,7 @@ router.post(
 		Profile.findOne({
 			user: req.user.id
 		})
+			.populate("user", ["name", "avatar", "email"])
 			.then(profile => {
 				const {
 					school,
@@ -286,6 +382,7 @@ router.delete(
 		Profile.findOne({
 			user: req.user.id
 		})
+			.populate("user", ["name", "avatar", "email"])
 			.then(profile => {
 				const removedIndex = profile.experience
 					.map(exp => exp.id)
@@ -312,6 +409,7 @@ router.delete(
 		Profile.findOne({
 			user: req.user.id
 		})
+			.populate("user", ["name", "avatar", "email"])
 			.then(profile => {
 				const removedIndex = profile.education
 					.map(edu => edu.id)

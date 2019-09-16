@@ -1,0 +1,71 @@
+.landing {
+	background-color: #fff;
+	padding-top: 3rem;
+
+	&-top {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		@media screen and (max-width: 1000px) {
+			margin-top: 2rem;
+		}
+		@media screen and (max-width: 700px) {
+			flex-direction: column-reverse;
+			margin-top: 0rem;
+		}
+		&--left {
+			width: 42%;
+			@media screen and (max-width: 700px) {
+				width: 70%;
+				margin: 3rem 0;
+				text-align: center;
+			}
+			@media screen and (max-width: 600px) {
+				width: 80%;
+			}
+			&-title {
+				font-size: 3.5rem;
+				font-weight: lighter;
+				margin-bottom: 2rem;
+				@media screen and (max-width: 1000px) {
+					font-size: 3rem;
+				}
+				@media screen and (max-width: 700px) {
+					font-size: 2.4rem;
+				}
+				@media screen and (max-width: 500px) {
+					font-size: 2.1rem;
+					margin-bottom: 1.5rem;
+				}
+			}
+			&-subtitle {
+				font-size: 1.5rem;
+				margin-bottom: 2rem;
+				font-weight: normal;
+				@media screen and (max-width: 1000px) {
+					font-size: 1.3rem;
+				}
+				@media screen and (max-width: 500px) {
+					font-size: 1.2rem;
+				}
+			}
+			& button {
+				@media screen and (max-width: 1000px) {
+					font-size: 1.5rem;
+				}
+			}
+		}
+		&--right {
+			width: 58%;
+			@media screen and (max-width: 600px) {
+				width: 70%;
+			}
+			@media screen and (max-width: 500px) {
+				width: 85%;
+			}
+			& img {
+				width: 100%;
+			}
+		}
+	}
+}
