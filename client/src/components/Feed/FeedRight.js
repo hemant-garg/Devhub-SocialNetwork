@@ -30,7 +30,7 @@ class FeedRight extends Component {
 						/>
 						<div>
 							<strong>Hemant Garg</strong>
-							<p>Developer of this App</p>
+							<p>Founder/Developer of DevHub</p>
 						</div>
 					</div>
 					<Divider />
