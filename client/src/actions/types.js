@@ -14,3 +14,9 @@ export const GET_POSTS = "GET_POSTS";
 export const GET_POST = "GET_POST";
 export const ADD_POST = "ADD_POST";
 export const DELETE_POST = "DELETE_POST";
+
+export const SET_EXP_FORM_STATE = "SET_EXP_FORM_STATE";
+export const SET_EDU_FORM_STATE = "SET_EDU_FORM_STATE";
+export const SET_BIO_FORM_STATE = "SET_BIO_FORM_STATE";
+export const SET_SKILLS_FORM_STATE = "SET_SKILLS_FORM_STATE";
+export const SET_SOCIAL_FORM_STATE = "SET_SOCIAL_FORM_STATE";

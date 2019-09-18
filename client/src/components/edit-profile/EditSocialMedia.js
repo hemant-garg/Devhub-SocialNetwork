@@ -75,7 +75,10 @@ class EditSocialMedia extends Component {
 			linkedin: this.state.linkedin
 		};
 		// console.log("data sent: ", profileData);
-		this.props.editSocialMedia(profileData);
+
+		this.props.editSocialMedia(profileData, () =>
+			this.props.submitSuccess(true)
+		);
 	};
 
 	render() {
