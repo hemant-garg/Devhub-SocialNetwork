@@ -16,6 +16,11 @@ class ProfileLeft extends Component {
 	handleSocialForm = () => {
 		this.setState(prev => ({ socialFormOpen: !prev.socialFormOpen }));
 	};
+
+	formSubmitted = issubmit => {
+		this.setState({ socialFormOpen: !issubmit });
+	};
+
 	render() {
 		const Segment = styled.div`
 			border-radius: 0.5rem;
@@ -60,7 +65,12 @@ class ProfileLeft extends Component {
 							/>
 						) : null}
 					</div>
-					{socialFormOpen && <EditSocialMedia profile={profile} />}
+					{socialFormOpen && (
+						<EditSocialMedia
+							submitSuccess={this.formSubmitted}
+							profile={profile}
+						/>
+					)}
 					<p style={{ marginTop: "1.5rem", textAlign: "left" }}>
 						{isEmpty(profile.website) ? null : (
 							<a
