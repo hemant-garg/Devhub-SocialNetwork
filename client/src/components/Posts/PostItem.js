@@ -148,8 +148,8 @@ class PostItem extends PureComponent {
 									</FacebookShareButton>
 									<WhatsappShareButton
 										style={{ marginRight: ".5rem" }}
-										url={"whatsapp.com"}
-										title={"Whatsapp title"}
+										url={shareUrl}
+										title={title}
 										separator=":: "
 										className="Demo__some-network__share-button"
 									>
@@ -157,6 +157,7 @@ class PostItem extends PureComponent {
 									</WhatsappShareButton>
 									<LinkedinShareButton
 										url={shareUrl}
+										title={title}
 										style={{ marginRight: ".5rem" }}
 										windowWidth={750}
 										windowHeight={600}
