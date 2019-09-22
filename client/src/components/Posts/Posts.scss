@@ -56,6 +56,24 @@
 		// justify-content: space-between;
 		font-family: "Montserrat", sans-serif;
 
+		& #sharebuttons {
+			display: flex;
+			margin-left: 1rem;
+			width: 0%;
+			overflow: hidden;
+			transition: all 1s ease;
+
+			-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+			-ms-transition: all 1s ease;
+			-o-transition: all 1s ease;
+
+			&.active {
+				width: 100%;
+				overflow: visible;
+			}
+		}
+
 		& i {
 			cursor: pointer;
 			color: $dark-text;
@@ -69,3 +87,13 @@
 		}
 	}
 }
+
+// @keyframes showButtons {
+// 	from {
+// 		width: 0;
+// 	}
+// 	to {
+// 		width: 100%;
+// 		overflow: visible;
+// 	}
+// }

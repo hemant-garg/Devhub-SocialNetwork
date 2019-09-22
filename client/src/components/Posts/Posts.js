@@ -36,8 +36,6 @@ class Posts extends Component {
 			box-sizing: border-box;
 		`;
 
-		console.log(this.props);
-
 		return (
 			<div style={{ backgroundColor: "#f5f5f5" }}>
 				<Container>

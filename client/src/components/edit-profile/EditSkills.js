@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Form, Button, Label } from "semantic-ui-react";
-
-import InputGroup from "../common/InputGroup";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
-
-import { addSkills, getCurrentProfile } from "../../actions/profileActions";
-import isEmpty from "../../validation/isEmpty";
+import { addSkills } from "../../actions/profileActions";
 
 class EditSkills extends Component {
 	constructor(props) {
@@ -41,16 +37,13 @@ class EditSkills extends Component {
 		const profileData = {
 			skills: this.state.skills
 		};
-		// console.log("data sent: ", profileData);
 		this.props.addSkills(profileData);
 	};
 
 	render() {
-		const { profile } = this.props;
 		const { errors, skills } = this.state;
 		return (
 			<div className="form form-red">
-				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
 					<h4>Edit Skill: </h4>
 				</div>
@@ -67,15 +60,6 @@ class EditSkills extends Component {
 						<p style={{ color: "#fff", fontSize: ".8rem" }}>
 							* Each skill must be comma separated
 						</p>
-						{/*}	<Form.Input
-							name="youtube"
-							value={this.state.youtube}
-							onChange={this.onChange}
-							fluid
-							error={errors.youtube ? errors.youtube : null}
-							transparent
-							placeholder="Youtube"
-        /> */}
 						<div style={{ textAlign: "center", marginTop: "2rem" }}>
 							<Button type="submit" size="tiny" circular content="Submit" />
 						</div>

@@ -1,10 +1,52 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { Icon, Input, Divider } from "semantic-ui-react";
-import PropTypes from "prop-types";
+import { Icon, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import classnames from "classnames";
+import {
+	FacebookShareButton,
+	LinkedinShareButton,
+	TwitterShareButton,
+	TelegramShareButton,
+	WhatsappShareButton,
+	PinterestShareButton,
+	VKShareButton,
+	OKShareButton,
+	RedditShareButton,
+	TumblrShareButton,
+	LivejournalShareButton,
+	MailruShareButton,
+	ViberShareButton,
+	WorkplaceShareButton,
+	LineShareButton,
+	PocketShareButton,
+	InstapaperShareButton,
+	EmailShareButton,
+	FacebookShareCount,
+	PinterestShareCount,
+	VKShareCount,
+	OKShareCount,
+	RedditShareCount,
+	TumblrShareCount,
+	FacebookIcon,
+	TwitterIcon,
+	TelegramIcon,
+	WhatsappIcon,
+	LinkedinIcon,
+	PinterestIcon,
+	VKIcon,
+	OKIcon,
+	RedditIcon,
+	TumblrIcon,
+	LivejournalIcon,
+	MailruIcon,
+	ViberIcon,
+	WorkplaceIcon,
+	LineIcon,
+	PocketIcon,
+	InstapaperIcon,
+	EmailIcon
+} from "react-share";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 import CommentForm from "../Post/CommentForm";
 import CommentFeed from "../Post/CommentFeed";
@@ -24,27 +66,39 @@ const months = [
 	"December"
 ];
 
-class PostItem extends Component {
+class PostItem extends PureComponent {
+	state = {
+		liked: false
+	};
+
 	onDeleteClick = id => {
 		this.props.deletePost(id);
 	};
 
 	onLikeClick = id => {
+		this.setState({ liked: true });
 		this.props.addLike(id);
 	};
 	onUnlikeClick = id => {
+		this.setState({ liked: false });
 		this.props.removeLike(id);
+	};
+
+	toggleShareButtons = () => {
+		let btns = document.getElementById("sharebuttons");
+		btns.classList.toggle("active");
 	};
 
 	findUserLike = likes => {
 		const { auth } = this.props;
 		if (likes.filter(like => like.user === auth.user.id).length > 0)
-			return true;
-		return false;
+			this.setState({ liked: true });
+		else this.setState({ liked: false });
 	};
 
 	render() {
-		const { post, auth, showActions, postId } = this.props;
+		const { liked } = this.state;
+		const { post, auth } = this.props;
 		console.log("post", this.props);
 		const Segment = styled.div`
 			border-radius: 0.5rem;
@@ -56,7 +110,10 @@ class PostItem extends Component {
 			box-sizing: border-box;
 		`;
 
-		// console.log(post);
+		this.findUserLike(post.likes);
+
+		let shareUrl = `${window.location.origin}/post/${post._id}`;
+		let title = post.text;
 		return (
 			<div>
 				<Segment>
@@ -93,26 +150,59 @@ class PostItem extends Component {
 						<p className="postitem-text">{post.text}</p>
 
 						<div className="postitem-bottom">
-							<Icon
-								color="red"
-								onClick={() => this.onLikeClick(post._id)}
-								name="heart outline"
-							/>
-							{post.likes.length > 0 && post.likes.length}
-							{
-								// <i
-								// 	className={classnames('fas fa-thumbs-up', {
-								// 		'text-info': this.findUserLike(post.likes)
-								// 	})}
-								// />
-							}
-							{/* <button onClick={() => this.onUnlikeClick(post._id)} type="button">
-						<Icon name="thumbs down outline" /> Unlike
-					</button> */}
-							<Link to={`/post/${post._id}`}>
-								<Icon name="comment outline" />
-							</Link>
-							<Icon name="share alternate" />
+							<div>
+								{!liked && (
+									<Icon
+										onClick={() => this.onLikeClick(post._id)}
+										name="heart outline"
+									/>
+								)}
+								{liked && (
+									<Icon
+										color="red"
+										onClick={() => this.onUnlikeClick(post._id)}
+										name="heart"
+									/>
+								)}
+								{post.likes.length > 0 && post.likes.length}
+
+								<Link to={`/post/${post._id}`}>
+									<Icon name="comment outline" />
+								</Link>
+								<Icon
+									name="share alternate"
+									onClick={this.toggleShareButtons}
+								/>
+							</div>
+							<div>
+								<div id="sharebuttons">
+									<FacebookShareButton
+										style={{ marginRight: ".5rem" }}
+										url={shareUrl}
+										quote={title}
+									>
+										<FacebookIcon size={28} round />
+									</FacebookShareButton>
+									<WhatsappShareButton
+										style={{ marginRight: ".5rem" }}
+										url={"whatsapp.com"}
+										title={"Whatsapp title"}
+										separator=":: "
+										className="Demo__some-network__share-button"
+									>
+										<WhatsappIcon size={28} round />
+									</WhatsappShareButton>
+									<LinkedinShareButton
+										url={shareUrl}
+										style={{ marginRight: ".5rem" }}
+										windowWidth={750}
+										windowHeight={600}
+										className="Demo__some-network__share-button"
+									>
+										<LinkedinIcon size={28} round />
+									</LinkedinShareButton>
+								</div>
+							</div>
 						</div>
 					</div>
 					<Divider />

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Icon, Button } from "semantic-ui-react";
+import { Icon, Button, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
 import { addPost } from "../../actions/postActions";
 import "./Posts.scss";
-class PostForm extends Component {
+class PostForm extends PureComponent {
 	state = {
 		text: "",
 		errors: {}
@@ -24,8 +24,9 @@ class PostForm extends Component {
 	onSubmit = e => {
 		e.preventDefault();
 		const { user } = this.props.auth;
+		let text = document.getElementById("postform").value;
 		const newPost = {
-			text: this.state.text,
+			text,
 			name: user.name,
 			avatar: user.avatar,
 			handle: user.handle
@@ -46,13 +47,12 @@ class PostForm extends Component {
 
 		return (
 			<Segment>
-				<form onSubmit={this.onSubmit}>
+				<Form onSubmit={this.onSubmit}>
 					<TextareaFieldGroup
 						name="text"
+						id="postform"
 						error={errors.text}
 						rows={3}
-						onChange={this.onChange}
-						value={text}
 						placeholder="Write Something here..."
 					/>
 					<div className="postform-bottom">
@@ -70,7 +70,7 @@ class PostForm extends Component {
 							</Button.Content>
 						</Button>
 					</div>
-				</form>
+				</Form>
 			</Segment>
 		);
 	}
