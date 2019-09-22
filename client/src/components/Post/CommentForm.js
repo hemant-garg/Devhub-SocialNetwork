@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Icon, Input } from 'semantic-ui-react';
-import TextareaFieldGroup from '../common/TextareaFieldGroup';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Icon, Input } from "semantic-ui-react";
 
-import { addComment } from '../../actions/postActions';
+import { addComment } from "../../actions/postActions";
 
 class CommentForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			text: '',
+			text: "",
 			errors: {}
 		};
 	}
@@ -35,7 +34,7 @@ class CommentForm extends Component {
 			avatar: user.avatar
 		};
 		this.props.addComment(newComment, postId);
-		this.setState({ text: '' });
+		this.setState({ text: "" });
 	};
 	render() {
 		const { errors, text } = this.state;

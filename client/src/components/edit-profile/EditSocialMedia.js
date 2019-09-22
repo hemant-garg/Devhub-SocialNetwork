@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Form, Button, Label } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 
-import {
-	editSocialMedia,
-	getCurrentProfile
-} from "../../actions/profileActions";
+import { editSocialMedia } from "../../actions/profileActions";
 import isEmpty from "../../validation/isEmpty";
 
 class EditSocialMedia extends Component {
@@ -50,7 +47,6 @@ class EditSocialMedia extends Component {
 			profile.linkedin = !isEmpty(profile.social.linkedin)
 				? profile.social.linkedin
 				: "";
-			// console.log(profile);
 			this.setState({
 				youtube: profile.youtube,
 				linkedin: profile.linkedin,
@@ -74,7 +70,6 @@ class EditSocialMedia extends Component {
 			youtube: this.state.youtube,
 			linkedin: this.state.linkedin
 		};
-		// console.log("data sent: ", profileData);
 
 		this.props.editSocialMedia(profileData, () =>
 			this.props.submitSuccess(true)
@@ -83,10 +78,8 @@ class EditSocialMedia extends Component {
 
 	render() {
 		const { errors } = this.state;
-		// console.log("social eroor", errors);
 		return (
 			<div className="form form-pink">
-				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
 					<h4>Edit Social Links: </h4>
 				</div>
@@ -124,7 +117,7 @@ class EditSocialMedia extends Component {
 							value={this.state.instagram}
 							onChange={this.onChange}
 							fluid
-							// error={errors.instagram ? errors.instagram : null}
+							error={errors.instagram ? errors.instagram : null}
 							transparent
 							placeholder="Instagram"
 						/>

@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 import { deleteAccount } from "../../actions/profileActions.js";
 import styled from "styled-components";
 import { Label, Divider, Button, Icon } from "semantic-ui-react";
-import isEmpty from "../../validation/isEmpty";
 import EditSkills from "../edit-profile/EditSkills.js";
 
 class ProfileAbout extends Component {

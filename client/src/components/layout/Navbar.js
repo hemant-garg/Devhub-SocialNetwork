@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Icon, Dropdown } from "semantic-ui-react";
-import styled from "styled-components";
+import { Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { Container } from "semantic-ui-react";
 import { logoutUser } from "../../actions/authActions";
@@ -10,7 +8,6 @@ import { clearCurrentProfile } from "../../actions/profileActions";
 import Button from "../common/Button.js";
 import SearchBox from "../SearchBox/SearchBox";
 import "./Navbar.scss";
-// import '../../variables.scss';
 
 class Navbar extends Component {
 	state = { activeItem: "home" };
@@ -24,10 +21,7 @@ class Navbar extends Component {
 	};
 
 	render() {
-		const { activeItem } = this.state;
-		const { handle } = this.props;
 		const { user, isAuthenticated } = this.props.auth;
-		console.log("nav", this.props.auth);
 		const authLinks = (
 			<div style={{ display: "flex", alignItems: "center" }}>
 				<img
@@ -50,20 +44,7 @@ class Navbar extends Component {
 							icon="user"
 							text={user.name}
 						/>
-						{/* <Dropdown.Item
-							style={{ marginLeft: "0" }}
-							as={Link}
-							to="/dashboard"
-							icon="edit"
-							text="Edit Profile"
-						/> */}
-						{/* <Dropdown.Item
-							style={{ marginLeft: "0" }}
-							as={Link}
-							to="/feed"
-							icon="book"
-							text="My Posts"
-						/> */}
+
 						<Dropdown.Divider />
 
 						<Dropdown.Item

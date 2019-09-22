@@ -1,16 +1,14 @@
-# SocialNetwork for Developers
+# DEVHUB - SocialNetwork for Developers
 
-Hey there, I've build this project from complete scratch using MERN stack(mongoDB, ExpressJS, ReactJS, NodeJS).
+Hey there, I've created this beautiful looking project from complete scratch using MERN stack(mongoDB, ExpressJS, ReactJS, NodeJS).
 
-`This is not a fancy looking web app. I was just trying to practice Javascript skills. ( I will make the UI/UX better in future )`
-
-This is very basic website as of now, but i am planning to make it really big. So if anyone of you wants to collaborate with me. Just Ping me any time. You will get my contact info from the bio section.
-
-**Check out the website here -** https://social-network-v1.herokuapp.com/
+**Check out the website here -** https://devhub2.herokuapp.com/
 
 ( This project is the outcome of the course "MERN Stack Front To Back: Full Stack React, Redux & Node.js" by Brad Traversy. Great course ;) )
 
 ## Main features of this Website
+
+> Simple yet beautiful UI.
 
 > Login/Signup using jwt and passport.
 

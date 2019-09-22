@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
 import classnames from "classnames";
 
 const textareaStyles = {
@@ -47,15 +45,6 @@ const TextareaFieldGroup = ({
 			)}
 		</div>
 	);
-};
-
-TextareaFieldGroup.propTypes = {
-	name: PropTypes.string.isRequired,
-	placeholder: PropTypes.string,
-	value: PropTypes.string.isRequired,
-	error: PropTypes.string,
-	info: PropTypes.string,
-	onChange: PropTypes.func.isRequired
 };
 
 export default TextareaFieldGroup;

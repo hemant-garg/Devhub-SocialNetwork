@@ -15,10 +15,6 @@ import {
 class ProfileCreds extends Component {
 	state = { expFormOpen: false, eduFormOpen: false };
 
-	// componentDidUpdate(prevProps) {
-	// 	this.setState({ expFormOpen: false });
-	// }
-
 	handleExpForm = () => {
 		this.setState(prev => ({ expFormOpen: !prev.expFormOpen }));
 	};
@@ -43,7 +39,6 @@ class ProfileCreds extends Component {
 			box-sizing: border-box;
 		`;
 		const { education, experience, userId, auth } = this.props;
-		console.log("profilecreds", this.props);
 		const expItems = experience.map(exp => (
 			<div className="experience" key={exp._id}>
 				<Divider />
@@ -106,7 +101,6 @@ class ProfileCreds extends Component {
 			</div>
 		));
 
-		console.log("profile creds", this.props);
 		const { eduFormOpen, expFormOpen } = this.state;
 		return (
 			<div>

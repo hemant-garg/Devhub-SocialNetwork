@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Label, Divider } from 'semantic-ui-react';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Label, Divider } from "semantic-ui-react";
 
 class ProfileGithub extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			clientId: '5c1b0f4a3bcce086e8eb',
-			clientSecret: '955db34b1f9dfe9c43b7754207efcf4728fe6a74',
+			clientId: "5c1b0f4a3bcce086e8eb",
+			clientSecret: "955db34b1f9dfe9c43b7754207efcf4728fe6a74",
 			count: 5,
-			sort: 'created: asc',
+			sort: "created: asc",
 			repos: []
 		};
 	}
@@ -21,7 +21,7 @@ class ProfileGithub extends Component {
 		)
 			.then(res => res.json())
 			.then(data => {
-				if (data.message !== 'not found' && this.refs.myRef)
+				if (data.message !== "not found" && this.refs.myRef)
 					this.setState({ repos: data });
 			})
 			.catch(err => console.log(err));
@@ -34,10 +34,11 @@ class ProfileGithub extends Component {
 				if (i > 3) return;
 				if (i > 2)
 					return (
-						<div key={repo.id} style={{ textAlign: 'center' }}>
+						<div key={repo.id} style={{ textAlign: "center" }}>
 							<strong>
 								<a
 									target="_blank"
+									rel="noopener noreferrer"
 									href={`https://github.com/${this.props.username}`}
 								>
 									View all
@@ -48,7 +49,7 @@ class ProfileGithub extends Component {
 
 				return (
 					<div key={repo.id} className="repo">
-						<h5 style={{ marginBottom: '.5rem' }}>
+						<h5 style={{ marginBottom: ".5rem" }}>
 							<a href={repo.html_url} rel="noopener noreferrer" target="_blank">
 								{repo.name}
 							</a>
@@ -71,7 +72,7 @@ class ProfileGithub extends Component {
 				);
 			});
 		} else {
-			repoItems = 'No repository found !';
+			repoItems = "No repository found !";
 		}
 		return <div ref="myRef">{repoItems}</div>;
 	}

@@ -1,34 +1,32 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Icon } from 'semantic-ui-react';
-import { deleteComment } from '../../actions/postActions';
-import './Comment.scss';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Icon } from "semantic-ui-react";
+import { deleteComment } from "../../actions/postActions";
+import "./Comment.scss";
 
 const months = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December'
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
 ];
 class CommentItem extends Component {
 	onDeleteClick = (postId, commentId) => {
-		// console.log(postId);
 		this.props.deleteComment(postId, commentId);
 	};
 
 	render() {
 		const { postId, auth, comment } = this.props;
-		console.log(this.props);
 		return (
 			<div className="commentitem">
 				<img src={comment.avatar} alt="comment" />
@@ -47,7 +45,7 @@ class CommentItem extends Component {
 								<Icon
 									title="Delete"
 									name="trash"
-									style={{ marginRight: '15px', cursor: 'pointer' }}
+									style={{ marginRight: "15px", cursor: "pointer" }}
 									onClick={() => this.onDeleteClick(postId, comment._id)}
 								/>
 							) : null}

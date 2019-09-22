@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider, Icon } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import isEmpty from "../../validation/isEmpty";
 import EditBio from "../edit-profile/EditBio";
@@ -25,7 +25,6 @@ class ProfileHeader extends Component {
 		`;
 		const { profile, user } = this.props;
 		const { bioFormOpen } = this.state;
-		console.log("header", this.props);
 		return (
 			<Segment>
 				<div className="experience-top">

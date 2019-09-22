@@ -6,46 +6,10 @@ import { Link } from "react-router-dom";
 import {
 	FacebookShareButton,
 	LinkedinShareButton,
-	TwitterShareButton,
-	TelegramShareButton,
 	WhatsappShareButton,
-	PinterestShareButton,
-	VKShareButton,
-	OKShareButton,
-	RedditShareButton,
-	TumblrShareButton,
-	LivejournalShareButton,
-	MailruShareButton,
-	ViberShareButton,
-	WorkplaceShareButton,
-	LineShareButton,
-	PocketShareButton,
-	InstapaperShareButton,
-	EmailShareButton,
-	FacebookShareCount,
-	PinterestShareCount,
-	VKShareCount,
-	OKShareCount,
-	RedditShareCount,
-	TumblrShareCount,
 	FacebookIcon,
-	TwitterIcon,
-	TelegramIcon,
 	WhatsappIcon,
-	LinkedinIcon,
-	PinterestIcon,
-	VKIcon,
-	OKIcon,
-	RedditIcon,
-	TumblrIcon,
-	LivejournalIcon,
-	MailruIcon,
-	ViberIcon,
-	WorkplaceIcon,
-	LineIcon,
-	PocketIcon,
-	InstapaperIcon,
-	EmailIcon
+	LinkedinIcon
 } from "react-share";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 import CommentForm from "../Post/CommentForm";
@@ -99,7 +63,6 @@ class PostItem extends PureComponent {
 	render() {
 		const { liked } = this.state;
 		const { post, auth } = this.props;
-		console.log("post", this.props);
 		const Segment = styled.div`
 			border-radius: 0.5rem;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);

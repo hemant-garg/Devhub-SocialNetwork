@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Form, Button, Label } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
 import { addSkills } from "../../actions/profileActions";
 
@@ -18,14 +18,6 @@ class EditSkills extends Component {
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
 		}
-		// if (nextProps.profile.profile) {
-		// 	const profile = nextProps.profile.profile;
-		// 	const skillsCSV = profile.skills.join(',');
-
-		// 	this.setState({
-		// 		skills: skillsCSV
-		// 	});
-		// }
 	}
 
 	onChange = e => {

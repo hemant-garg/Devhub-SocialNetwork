@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import SemanticDatepicker from 'react-semantic-ui-datepickers';
-import ptLocale from 'react-semantic-ui-datepickers/dist/locales/pt-BR';
-import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import SemanticDatepicker from "react-semantic-ui-datepickers";
+import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 
-import { Form, Button, Label } from 'semantic-ui-react';
-import TextFieldGroup from '../common/TextFieldGroup';
-import TextareaFieldGroup from '../common/TextareaFieldGroup';
-import { addExperience } from '../../actions/profileActions';
-import './Addcreds.scss';
+import { Form, Button } from "semantic-ui-react";
+import TextareaFieldGroup from "../common/TextareaFieldGroup";
+import { addExperience } from "../../actions/profileActions";
+import "./Addcreds.scss";
 class AddExperience extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			company: '',
-			title: '',
-			location: '',
-			from: '',
-			to: '',
+			company: "",
+			title: "",
+			location: "",
+			from: "",
+			to: "",
 			current: false,
-			description: '',
+			description: "",
 			errors: {},
 			disabled: false
 		};
@@ -59,16 +57,15 @@ class AddExperience extends Component {
 			title: this.state.title,
 			current: this.state.current
 		};
-		console.log('data', data);
+		console.log("data", data);
 		this.props.addExperience(data, this.props.history);
 	};
 
 	render() {
 		const { errors } = this.state;
-		console.log('errors', errors);
+		console.log("errors", errors);
 		return (
 			<div className="form form-green">
-				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
 					<h4>Add Your Experience</h4>
 				</div>
@@ -139,7 +136,7 @@ class AddExperience extends Component {
 							onChange={this.onChange}
 							error={errors.description}
 						/>
-						<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+						<div style={{ textAlign: "center", marginTop: "2rem" }}>
 							<Button type="submit" size="tiny" circular content="Submit" />
 						</div>
 					</Form>

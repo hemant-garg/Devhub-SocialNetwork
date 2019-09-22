@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-import { Container, Icon, Divider } from "semantic-ui-react";
+import { Icon, Divider } from "semantic-ui-react";
 import isEmpty from "../../validation/isEmpty";
 
 import "./Profile.scss";
@@ -33,9 +32,8 @@ class ProfileLeft extends Component {
 			font-family: "Montserrat", sans-serif;
 			box-sizing: border-box;
 		`;
-		const { user, profile, auth } = this.props;
+		const { user, profile } = this.props;
 		const { socialFormOpen } = this.state;
-		console.log("profile-left", this.props);
 		return (
 			<section className="profile-left">
 				<Segment>

@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Spinner from "../common/Spinner";
 import { Container } from "semantic-ui-react";
 import PostItem from "../Posts/PostItem";
 import { getPost } from "../../actions/postActions";
-import CommentForm from "./CommentForm";
-import CommentFeed from "./CommentFeed";
 import FeedLeft from "../Feed/FeedLeft";
 import FeedRight from "../Feed/FeedRight";
 

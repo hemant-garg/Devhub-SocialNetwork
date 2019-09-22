@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-import { Divider, Icon } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 import "./Profile.scss";
 import ProfileGithub from "./ProfileGithub";
 

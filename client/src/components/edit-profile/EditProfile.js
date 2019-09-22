@@ -109,7 +109,6 @@ class CreateProfile extends Component {
 			youtube: this.state.youtube,
 			linkedin: this.state.linkedin
 		};
-		// console.log("data sent: ", profileData);
 		this.props.createProfile(profileData, this.props.history);
 	};
 
@@ -181,9 +180,7 @@ class CreateProfile extends Component {
 								Go Back
 							</Link>
 							<h1 class="display-4 text-center">Edit Your Profile</h1>
-							{/* <p class="lead text-center">
-								Let's get some information to make your profile stand out
-							</p> */}
+
 							<small class="d-block pb-3">* = required field</small>
 							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup

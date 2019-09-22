@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Form, Button, Label } from "semantic-ui-react";
-
-import InputGroup from "../common/InputGroup";
+import { Form, Button } from "semantic-ui-react";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
 
-import { addBio, getCurrentProfile } from "../../actions/profileActions";
-import isEmpty from "../../validation/isEmpty";
+import { addBio } from "../../actions/profileActions";
 
 class EditBio extends Component {
 	constructor(props) {
@@ -22,14 +19,6 @@ class EditBio extends Component {
 		if (nextProps.errors) {
 			this.setState({ errors: nextProps.errors });
 		}
-		// if (nextProps.profile.profile) {
-		// 	const profile = nextProps.profile.profile;
-		// 	const skillsCSV = profile.skills.join(',');
-
-		// 	this.setState({
-		// 		skills: skillsCSV
-		// 	});
-		// }
 	}
 
 	onChange = e => {
@@ -41,16 +30,13 @@ class EditBio extends Component {
 		const profileData = {
 			bio: this.state.bio
 		};
-		// console.log("data sent: ", profileData);
 		this.props.addBio(profileData);
 	};
 
 	render() {
-		const { profile } = this.props;
 		const { errors, bio } = this.state;
 		return (
 			<div className="form form-red">
-				{/*<Link to="/dashboard">Go Back</Link>*/}
 				<div className="form-header">
 					<h4>Edit Bio: </h4>
 				</div>

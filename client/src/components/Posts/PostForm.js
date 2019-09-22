@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { Icon, Button, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import TextareaFieldGroup from "../common/TextareaFieldGroup";
@@ -35,7 +34,7 @@ class PostForm extends PureComponent {
 		this.setState({ text: "" });
 	};
 	render() {
-		const { errors, text } = this.state;
+		const { errors } = this.state;
 		const Segment = styled.div`
 			border-radius: 0.5rem;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);

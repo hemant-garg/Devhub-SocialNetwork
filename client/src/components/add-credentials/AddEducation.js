@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import SemanticDatepicker from 'react-semantic-ui-datepickers';
-import ptLocale from 'react-semantic-ui-datepickers/dist/locales/pt-BR';
-import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+import SemanticDatepicker from "react-semantic-ui-datepickers";
+import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 
-import { Form, Button, Label } from 'semantic-ui-react';
-import TextFieldGroup from '../common/TextFieldGroup';
-import TextareaFieldGroup from '../common/TextareaFieldGroup';
-import { addEducation } from '../../actions/profileActions';
-import './Addcreds.scss';
+import { Form, Button } from "semantic-ui-react";
+import TextareaFieldGroup from "../common/TextareaFieldGroup";
+import { addEducation } from "../../actions/profileActions";
+import "./Addcreds.scss";
 
 class AddEducation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			school: '',
-			degree: '',
-			fieldofstudy: '',
-			from: '',
-			to: '',
+			school: "",
+			degree: "",
+			fieldofstudy: "",
+			from: "",
+			to: "",
 			current: false,
-			description: '',
+			description: "",
 			errors: {},
 			disabled: false
 		};
@@ -141,7 +139,7 @@ class AddEducation extends Component {
 							onChange={this.onChange}
 							error={errors.description}
 						/>
-						<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+						<div style={{ textAlign: "center", marginTop: "2rem" }}>
 							<Button type="submit" size="tiny" circular content="Submit" />
 						</div>
 					</Form>
